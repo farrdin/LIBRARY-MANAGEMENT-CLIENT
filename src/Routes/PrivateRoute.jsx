@@ -1,7 +1,7 @@
 const PrivateRoute = () => {
   return (
     <div>
-      <h1>This is Private Route</h1>
+      <h1 className="text-center ">This is Private Route</h1>
     </div>
   );
 };

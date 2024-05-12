@@ -15,8 +15,10 @@
     "match-sorter": "^6.3.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^5.2.1",
     "react-router-dom": "^6.23.1",
-    "sort-by": "^1.2.0"
+    "sort-by": "^1.2.0",
+    "swiper": "^11.1.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
@@ -31,5 +33,10 @@
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.3",
     "vite": "^5.2.0"
-  }
+  },
+  "description": "- Assignment_ID: \"assignment_category_0008\" - Website Name : \"Knowledge Shelf\" - Live Site Link : prb9-a11.web.app",
+  "main": "Firebase.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
