@@ -11,7 +11,7 @@ const Categories = () => {
           alt=""
         />
         <p> category :RealStics</p>
-        <Link to="/category/${category}">
+        <Link to="/category">
           <button className="btn btn-secondary">See Categories</button>
         </Link>
       </div>
@@ -22,7 +22,7 @@ const Categories = () => {
           alt=""
         />
         <p> category :RealStics</p>
-        <Link to="/category/${category}">
+        <Link to="/category">
           <button className="btn btn-secondary">See Categories</button>
         </Link>
       </div>
@@ -33,7 +33,7 @@ const Categories = () => {
           alt=""
         />
         <p> category :RealStics</p>
-        <Link to="/category/${category}">
+        <Link to="/category">
           <button className="btn btn-secondary">See Categories</button>
         </Link>
       </div>
@@ -44,7 +44,7 @@ const Categories = () => {
           alt=""
         />
         <p> category :RealStics</p>
-        <Link to="/category/${category}">
+        <Link to="/category">
           <button className="btn btn-secondary">See Categories</button>
         </Link>
       </div>
@@ -55,7 +55,7 @@ const Categories = () => {
           alt=""
         />
         <p> category :RealStics</p>
-        <Link to="/category/${category}">
+        <Link to="/category">
           <button className="btn btn-secondary">See Categories</button>
         </Link>
       </div>
@@ -66,7 +66,7 @@ const Categories = () => {
           alt=""
         />
         <p> category :RealStics</p>
-        <Link to="/category/${category}">
+        <Link to="/category">
           <button className="btn btn-secondary">See Categories</button>
         </Link>
       </div>

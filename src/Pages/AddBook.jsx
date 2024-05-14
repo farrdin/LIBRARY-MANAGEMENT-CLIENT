@@ -43,8 +43,8 @@ const AddBook = () => {
                 Category
               </label>
               <input
-                id="email"
-                type="email"
+                id="category"
+                type="category"
                 placeholder="Category"
                 className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
               />
@@ -54,8 +54,8 @@ const AddBook = () => {
                 Rating
               </label>
               <input
-                id="email"
-                type="email"
+                id="rating"
+                type="rating"
                 placeholder="Rating"
                 className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
               />
