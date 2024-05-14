@@ -1,7 +1,19 @@
 import ReactiveButton from "reactive-button";
 import author from "../assets/Authors.jpg";
+import { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const BookDetail = () => {
+  const [startDate, setStartDate] = useState(new Date());
+  const handleBorrowBook = (e) => {
+    e.preventDefault();
+    const form = new FormData(e.currentTarget);
+    const email = form.get("email");
+    const name = form.get("name");
+    const date = startDate;
+    console.log(email, name, date);
+  };
   return (
     <div className="mt-20  lg:flex gap-5 justify-between border p-5 rounded-xl">
       <div className="mb-10 lg:mb-0 lg:w-[45%] border rounded flex justify-center bg-[#1313130D]">
@@ -55,43 +67,52 @@ const BookDetail = () => {
             id="my_modal_5"
             className="modal modal-bottom sm:modal-middle"
           >
-            <div className="modal-box space-y-10 bg-base-300">
-              <h3 className="font-bold text-lg text-center">
+            <div className="modal-box bg-base-300 ">
+              <h3 className="font-bold text-lg text-center mb-10">
                 Enter Details to Borrow This Book
               </h3>
-              <div className="flex gap-5">
+              <form onSubmit={handleBorrowBook}>
                 <div className="col-span-full sm:col-span-3">
                   <label htmlFor="email" className="text-sm">
                     Your Name
                   </label>
                   <input
+                    name="name"
                     id="name "
-                    type="name"
+                    type="text"
                     placeholder="Your Name"
                     className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
                   />
                 </div>
-                <div className="col-span-full sm:col-span-3">
+                <div className="col-span-full sm:col-span-3 mb-10">
                   <label htmlFor="email" className="text-sm">
                     Email
                   </label>
                   <input
+                    name="email"
                     id="email"
                     type="email"
                     placeholder="Your Email"
                     className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
                   />
                 </div>
-              </div>
-              <div>
-                
-            </div>
-              <div className="modal-action flex justify-center">
-                <button className="btn">Submit</button>
-                <form method="dialog">
-                  <button className="btn">Cancle</button>
-                </form>
-              </div>
+                <div>
+                  <span className="mr-2 text-base font-bold">
+                    Select Return Date:
+                  </span>
+                  <DatePicker
+                    required
+                    selected={startDate}
+                    onChange={(date) => setStartDate(date)}
+                  />
+                </div>
+                <div className="modal-action flex justify-center gap-5">
+                  <input className="btn" type="submit" value="Submit" />
+                  <form method="dialog">
+                    <button className="btn">Cancle</button>
+                  </form>
+                </div>
+              </form>
             </div>
           </dialog>
         </div>
