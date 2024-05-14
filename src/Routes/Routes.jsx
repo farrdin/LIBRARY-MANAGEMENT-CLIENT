@@ -11,6 +11,7 @@ import Update from "../Pages/Update";
 import About from "../Pages/About";
 import Error from "../Pages/Error";
 import PrivateRoute from "./PrivateRoute";
+import CategoryCard from "../Pages/Home/Componenets/CategoryCard";
 
 const router = createBrowserRouter([
   {
@@ -20,7 +21,8 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home></Home>,
+        element: <Home></Home>
+        ,
       },
       {
         path: "add",
@@ -73,6 +75,10 @@ const router = createBrowserRouter([
       {
         path: "about",
         element: <About></About>,
+      },
+      {
+        path: "/category/:category",
+        element: <CategoryCard></CategoryCard>,
       },
     ],
   },

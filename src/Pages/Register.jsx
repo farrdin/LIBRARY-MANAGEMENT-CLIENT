@@ -28,6 +28,11 @@ const Register = () => {
         theme: "colored",
       });
       return;
+    } else if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+      toast.error("You must add one special character", {
+        theme: "colored",
+      });
+      return;
     }
     createUser(email, password)
       .then((result) => {
@@ -87,7 +92,7 @@ const Register = () => {
           </div>
           <div className="space-y-1 text-sm">
             <label htmlFor="username" className="block dark:text-gray-600">
-              Email
+              Photo URL
             </label>
             <input
               required
@@ -111,7 +116,7 @@ const Register = () => {
               className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
             />
           </div>
-          <button className="block w-full p-3 text-center rounded-sm dark:text-gray-50 dark:bg-[#6C63FE]">
+          <button className="block w-full p-3 text-center rounded-sm dark:text-gray-50 dark:bg-[#6C63FE] hover:bg-[#3F3D55] shadow-lg shadow-black/30 hover:shadow-inner hover:shadow-black/30  duration-300 cursor-pointer">
             Sign Up
           </button>
         </form>

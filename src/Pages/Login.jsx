@@ -98,7 +98,7 @@ const Login = () => {
               </a>
             </div>
           </div>
-          <button className="block w-full p-3 text-center rounded-sm dark:text-gray-50 dark:bg-[#6C63FF]">
+          <button className="block w-full p-3 text-center rounded-sm dark:text-gray-50 dark:bg-[#6C63FF] hover:bg-[#3F3D55] shadow-lg shadow-black/30 hover:shadow-inner hover:shadow-black/30  duration-300 cursor-pointer">
             Sign in
           </button>
         </form>

@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../Context/AuthProvider";
+import ReactiveButton from "reactive-button";
 
 const NavBar = () => {
   const [theme, setTheme] = useState("light");
@@ -50,7 +51,7 @@ const NavBar = () => {
     </>
   );
   return (
-    <div className="navbar bg-base-100 shadow-lg fixed top-0 z-10">
+    <div className="navbar bg-base-300 shadow-lg fixed top-0 z-10">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -120,7 +121,15 @@ const NavBar = () => {
         ) : (
           <>
             <Link to="login">
-              <button className="btn btn-secondary">Login</button>
+              <ReactiveButton
+                size="medium"
+                shadow
+                outline
+                rounded
+                idleText={
+                  <span className="text-base font-medium "> Login</span>
+                }
+              />
             </Link>
           </>
         )}
