@@ -5,7 +5,7 @@ import Section2 from "./Componenets/Section2";
 
 const Home = () => {
   return (
-    <div>
+    <div className="space-y-20">
       <Banner></Banner>
       <Section1></Section1>
       <Categories></Categories>

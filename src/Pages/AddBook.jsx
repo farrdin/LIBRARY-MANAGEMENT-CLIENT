@@ -1,6 +1,6 @@
 const AddBook = () => {
   return (
-    <div>
+    <div className="mt-20">
       <h1>This is Add Book page</h1>
     </div>
   );

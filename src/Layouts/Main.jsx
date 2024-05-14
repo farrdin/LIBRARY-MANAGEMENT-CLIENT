@@ -4,9 +4,11 @@ import Footer from "../Pages/Home/Componenets/Footer";
 
 const Main = () => {
   return (
-    <div>
+    <div className="space-y-20">
       <NavBar></NavBar>
-      <Outlet></Outlet>
+      <div className="w-[85%] mx-auto">
+        <Outlet></Outlet>
+      </div>
       <Footer></Footer>
     </div>
   );

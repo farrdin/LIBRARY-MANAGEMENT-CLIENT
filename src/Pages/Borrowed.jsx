@@ -1,6 +1,6 @@
 const Borrowed = () => {
   return (
-    <div>
+    <div className="mt-20">
       <h1>This is Borrowed Book page</h1>
     </div>
   );

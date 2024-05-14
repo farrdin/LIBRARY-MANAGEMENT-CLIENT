@@ -8,11 +8,15 @@ import Login from "../Pages/Login";
 import BookDetail from "../Pages/BookDetail";
 import Register from "../Pages/Register";
 import Update from "../Pages/Update";
+import About from "../Pages/About";
+import Error from "../Pages/Error";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <Error />,
     children: [
       {
         path: "/",
@@ -20,19 +24,35 @@ const router = createBrowserRouter([
       },
       {
         path: "add",
-        element: <AddBook></AddBook>,
+        element: (
+          <PrivateRoute>
+            <AddBook></AddBook>
+          </PrivateRoute>
+        ),
       },
       {
         path: "all",
-        element: <AllBook></AllBook>,
+        element: (
+          <PrivateRoute>
+            <AllBook></AllBook>
+          </PrivateRoute>
+        ),
       },
       {
         path: "detail",
-        element: <BookDetail></BookDetail>,
+        element: (
+          <PrivateRoute>
+            <BookDetail></BookDetail>
+          </PrivateRoute>
+        ),
       },
       {
         path: "borrow",
-        element: <Borrowed></Borrowed>,
+        element: (
+          <PrivateRoute>
+            <Borrowed></Borrowed>
+          </PrivateRoute>
+        ),
       },
       {
         path: "login",
@@ -44,7 +64,15 @@ const router = createBrowserRouter([
       },
       {
         path: "update",
-        element: <Update></Update>,
+        element: (
+          <PrivateRoute>
+            <Update></Update>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "about",
+        element: <About></About>,
       },
     ],
   },

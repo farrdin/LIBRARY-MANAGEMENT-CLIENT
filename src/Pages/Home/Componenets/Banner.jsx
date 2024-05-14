@@ -6,7 +6,7 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
 const Banner = () => {
   return (
-    <div className="h-96 ">
+    <div className="mt-[69px]">
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -23,22 +23,22 @@ const Banner = () => {
       >
         <SwiperSlide>
           <img
-            className="w-full rounded-2xl h-96"
-            src="https://i.ibb.co/rbYPS5f/1.jpg"
+            className="w-full rounded-2xl"
+            src="https://i.ibb.co/S74vpm2/Banner-1.jpg"
             alt=""
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
-            className="w-full rounded-2xl h-96"
-            src="https://i.ibb.co/RHJ9Yrr/2.jpg"
+            className="w-full rounded-2xl"
+            src="https://i.ibb.co/f0wc4VM/Banner-2.jpg"
             alt=""
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
-            className="w-full rounded-2xl h-96"
-            src="https://i.ibb.co/94zhKTP/4.jpg"
+            className="w-full rounded-2xl"
+            src="https://i.ibb.co/vjcm18H/Banner-3.jpg"
             alt=""
           />
         </SwiperSlide>

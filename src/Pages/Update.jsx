@@ -1,6 +1,6 @@
 const Update = () => {
   return (
-    <div>
+    <div className="mt-20">
       <h1>This is Update Page</h1>
     </div>
   );

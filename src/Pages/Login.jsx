@@ -1,13 +1,74 @@
+import { useContext } from "react";
 import { FaFacebook, FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { AuthContext } from "../Context/AuthProvider";
 
 const Login = () => {
+  const { logIn, googleLogIn, gitHubLogIn, facebookLogin } =
+    useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const form = new FormData(e.currentTarget);
+    const email = form.get("email");
+    const password = form.get("password");
+    logIn(email, password)
+      .then((result) => {
+        console.log(result.user);
+        {
+          toast.success("Logged In Successfully", {
+            theme: "colored",
+          });
+        }
+        e.target.reset();
+        setTimeout(() => {
+          navigate(location?.state ? location.state : "/");
+        }, 1500);
+      })
+      .catch((error) => {
+        console.error(error);
+        toast.error("Invalid Email or Password", { theme: "colored" });
+      });
+  };
+  const handleGoogleLogin = () => {
+    googleLogIn()
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+  const handleGitHubLogin = () => {
+    gitHubLogIn()
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+  const handleFacebookLogin = () => {
+    facebookLogin()
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
   return (
-    <div className="border p-5 m-10 rounded-3xl bg-base-300">
-      <div className="w-full mx-auto max-w-md p-8 space-y-3 rounded-xl dark:bg-base-200 dark:text-gray-800">
-        <h1 className="text-2xl font-bold text-center">Login</h1>
-        <form noValidate="" action="" className="space-y-6">
+    <div className="border p-5 m-10 rounded-3xl bg-base-300 flex flex-col md:flex-row mt-28">
+      <div className="w-full mx-auto max-w-md p-8 space-y-3 dark:text-gray-800">
+        <h1 className="text-2xl font-bold text-center text-[#4B7BEC]">
+          Sing In to Continue Access
+        </h1>
+        <form onSubmit={handleLogin} className="space-y-6">
           <div className="space-y-1 text-sm">
             <label htmlFor="username" className="block dark:text-gray-600">
               Email
@@ -37,7 +98,7 @@ const Login = () => {
               </a>
             </div>
           </div>
-          <button className="block w-full p-3 text-center rounded-sm dark:text-gray-50 dark:bg-violet-600">
+          <button className="block w-full p-3 text-center rounded-sm dark:text-gray-50 dark:bg-[#6C63FF]">
             Sign in
           </button>
         </form>
@@ -49,13 +110,25 @@ const Login = () => {
           <div className="flex-1 h-px sm:w-16 dark:bg-gray-300"></div>
         </div>
         <div className="flex justify-center space-x-4">
-          <button aria-label="Log in with Google" className="p-3 rounded-sm">
+          <button
+            onClick={handleGoogleLogin}
+            aria-label="Log in with Google"
+            className="p-3 rounded-sm"
+          >
             <FcGoogle className="text-4xl" />
           </button>
-          <button aria-label="Log in with facebook" className="p-3 rounded-sm">
-            <FaFacebook className="text-4xl text-blue-600" />
+          <button
+            onClick={handleFacebookLogin}
+            aria-label="Log in with facebook"
+            className="p-3 rounded-sm"
+          >
+            <FaFacebook className="text-4xl text-blue-700" />
           </button>
-          <button aria-label="Log in with GitHub" className="p-3 rounded-sm">
+          <button
+            onClick={handleGitHubLogin}
+            aria-label="Log in with GitHub"
+            className="p-3 rounded-sm"
+          >
             <FaGithub className="text-4xl text-secondary" />
           </button>
         </div>
@@ -65,6 +138,27 @@ const Login = () => {
             Sing Up
           </Link>
         </p>
+      </div>
+      <div className="rounded-2xl relative hidden lg:block">
+        <img
+          className="rounded-2xl h-full"
+          src="https://i.ibb.co/wMydrvh/Thumbnails-5.png"
+        />
+        <h1
+          className="absolute top-[2%] left-[30%] text-4xl text-end pr-10  font-bold overflow-hidden
+        "
+        >
+          New here? Register now and start exploring!
+        </h1>
+        <Link
+          to="/register"
+          className="text-white text-xl font-bold link-hover ml-1 absolute bottom-[48%] left-[19%]"
+        >
+          Sing Up
+        </Link>
+        <h1 className="text-sm font-semibold text-center text-Black absolute bottom-[39%] left-[17%]">
+          If You Dont have <br /> an account?
+        </h1>
       </div>
     </div>
   );
