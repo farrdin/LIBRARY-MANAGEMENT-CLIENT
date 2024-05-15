@@ -41,7 +41,7 @@ const BookDetail = () => {
         <hr />
         <div>
           <span className="text-xl font text-[#131313CC] font-medium">
-            {details.category}
+            {details?.category?.cname}
           </span>
           <hr className="my-3" />
           <p className="text-[#131313B2] font-normal text-base leading-7">

@@ -1,35 +1,52 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import ReactiveButton from "reactive-button";
 
 const Categories = () => {
-  const [defaultCollection, setDefaultCollection] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [uniqueCategories, setUniqueCategories] = useState([]);
+
   useEffect(() => {
     fetch("Api.json")
       .then((res) => res.json())
       .then((data) => {
-        const uniqueCategories = [
-          ...new Set(data.map((book) => book.category)),
+        const extractedCategories = data.map((item) => item.category);
+        setCategories(extractedCategories);
+
+        const uniqueCats = [
+          ...new Set(extractedCategories.map((cat) => cat.cname)),
         ];
-        setDefaultCollection(uniqueCategories);
+        setUniqueCategories(uniqueCats);
       });
   }, []);
   return (
     <div id="category" className="grid grid-cols-3 gap-4">
-      {defaultCollection.map((category, index) => (
-        <div
-          key={index}
-          className="w-full  border rounded-2xl bg-blue-500 text-center flex flex-col gap-5 p-5 "
-        >
-          <img
-            className="rounded-full w-[200px] mx-auto h-[200px]"
-            src={category}
-          />
-          <p> category : {category}</p>
-          <Link to={`/category/${category}`}>
-            <button className="btn btn-secondary">See Categories</button>
-          </Link>
-        </div>
-      ))}
+      {uniqueCategories.map((categoryName, index) => {
+        const category = categories.find((cat) => cat.cname === categoryName);
+        return (
+          <div
+            key={index}
+            className="w-full  border rounded-2xl text-center flex flex-col gap-5 p-5 "
+          >
+            <div>
+              <img
+                className="rounded-full w-[200px] mx-auto h-[200px]"
+                src={category.cimage}
+              />
+              <p> category : {category.cname}</p>
+            </div>
+            <Link to={`/category/${category.cname}`}>
+              <ReactiveButton
+                shadow
+                rounded
+                idleText={
+                  <span className="text-lg font-semibold">See Books</span>
+                }
+              />
+            </Link>
+          </div>
+        );
+      })}
     </div>
   );
 };
