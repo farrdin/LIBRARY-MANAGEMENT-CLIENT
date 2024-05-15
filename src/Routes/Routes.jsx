@@ -22,7 +22,6 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("/api.json"),
       },
       {
         path: "add",
@@ -41,7 +40,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "details/:_id",
+        path: "details/:id",
         element: (
           <PrivateRoute>
             <BookDetail></BookDetail>

@@ -1,11 +1,22 @@
 import ReactiveButton from "reactive-button";
-import author from "../assets/Authors.jpg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useParams } from "react-router-dom";
 
 const BookDetail = () => {
+  const { id } = useParams();
+  const [details, setDetails] = useState([]);
   const [startDate, setStartDate] = useState(new Date());
+  useEffect(() => {
+    fetch("/Api.json")
+      .then((res) => res.json())
+      .then((data) => {
+        const book = data.find((book) => book._id === id);
+        setDetails(book);
+      });
+  }, [id]);
+
   const handleBorrowBook = (e) => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
@@ -14,42 +25,38 @@ const BookDetail = () => {
     const date = startDate;
     console.log(email, name, date);
   };
+
   return (
     <div className="mt-20  lg:flex gap-5 justify-between border p-5 rounded-xl">
       <div className="mb-10 lg:mb-0 lg:w-[45%] border rounded flex justify-center bg-[#1313130D]">
-        <img src={author} className="min-h-[calc(100vh-100px)] p-20" />
+        <img src={details.image} className="min-h-[calc(100vh-100px)] p-20" />
       </div>
       <div className="lg:w-[55%] flex flex-col gap-3">
         <div className="flex flex-col gap-2">
-          <h1 className="text-[#131313] text-4xl font-bold">1975</h1>
+          <h1 className="text-[#131313] text-4xl font-bold">{details.name}</h1>
           <p className="text-[#131313CC] text-xl font-medium">
-            Author : Fardin Ahmed
+            Author : {details.authorName}
           </p>
         </div>
         <hr />
         <div>
           <span className="text-xl font text-[#131313CC] font-medium">
-            History
+            {details.category}
           </span>
           <hr className="my-3" />
           <p className="text-[#131313B2] font-normal text-base leading-7">
             <span className="text-[#131313] font-bold text-base leading-7">
               Review :
             </span>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci
-            ad doloribus officiis consequuntur saepe obcaecati rem nisi nobis
-            sapiente ipsum incidunt reprehenderit, optio, a cumque modi fuga
-            quis eius culpa blanditiis amet aperiam, quibusdam autem error.
-            Quia, laboriosam omnis neque ducimus sint laudantium autem
-            exercitationem. Obcaecati aliquid voluptate vitae accusamus!
+            {details.shortDescription}
           </p>
         </div>
         <div className="flex gap-3">
           <span className="text-base text-[#23BE0A] font-medium bg-[#23BE0A0D] p-1">
-            #Rating :
+            #Rating : {details.rating}
           </span>
           <span className="text-base text-[#23BE0A] font-medium bg-[#23BE0A0D] p-1">
-            #Quantity :
+            #Quantity : {details.quantity}
           </span>
         </div>
         <hr />
@@ -77,6 +84,7 @@ const BookDetail = () => {
                     Your Name
                   </label>
                   <input
+                    required
                     name="name"
                     id="name "
                     type="text"
@@ -89,6 +97,7 @@ const BookDetail = () => {
                     Email
                   </label>
                   <input
+                    required
                     name="email"
                     id="email"
                     type="email"
@@ -97,14 +106,23 @@ const BookDetail = () => {
                   />
                 </div>
                 <div>
-                  <span className="mr-2 text-base font-bold">
-                    Select Return Date:
-                  </span>
+                  <label
+                    htmlFor="date-picker"
+                    className="mr-2 text-base font-bold"
+                  >
+                    Select a date:
+                  </label>
                   <DatePicker
+                    id="date-picker"
+                    placeholderText="Select a date"
                     required
+                    isClearable
                     selected={startDate}
                     onChange={(date) => setStartDate(date)}
                   />
+                  {!startDate && (
+                    <div style={{ color: "red" }}>This field is required</div>
+                  )}
                 </div>
                 <div className="modal-action flex justify-center gap-5">
                   <input className="btn" type="submit" value="Submit" />

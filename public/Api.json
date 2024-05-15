@@ -5,7 +5,7 @@
     "quantity": 10,
     "authorName": "F. Scott Fitzgerald",
     "category": "Novel",
-    "shortDescription": "A classic novel set in the Jazz Age, focusing on the mysterious Jay Gatsby.",
+    "shortDescription": "A classic novel set in the Jazz Age, focusing on the mysterious Jay Gatsby. The story explores themes of decadence, idealism, resistance to change, social upheaval, and excess, creating a portrait of the Roaring Twenties that has been acclaimed for its vivid depiction of the American Dream's demise. Through its protagonist, Nick Carraway, readers are immersed in the world of wealth, privilege, and illusion, ultimately confronting the disillusionment that lies beneath the surface. With lyrical prose and compelling characters, Fitzgerald crafts a timeless narrative that continues to resonate with readers today.",
     "rating": 4.5
   },
   {
@@ -14,7 +14,7 @@
     "quantity": 7,
     "authorName": "Harper Lee",
     "category": "Novel",
-    "shortDescription": "A story of racial injustice in the Deep South through the eyes of young Scout Finch.",
+    "shortDescription": "A story of racial injustice in the Deep South through the eyes of young Scout Finch. Set in the fictional town of Maycomb, Alabama, during the 1930s, the novel explores themes of morality, empathy, and the loss of innocence. Through the trial of Tom Robinson, a black man falsely accused of raping a white woman, Lee sheds light on the prejudices and inequalities prevalent in society. With memorable characters like Atticus Finch and Boo Radley, the novel delves into the complexities of human nature and the importance of standing up for what is right, even in the face of adversity.",
     "rating": 5
   },
   {
@@ -23,7 +23,7 @@
     "quantity": 15,
     "authorName": "George Orwell",
     "category": "Novel",
-    "shortDescription": "A dystopian novel that delves into the dangers of totalitarianism.",
+    "shortDescription": "A dystopian novel that delves into the dangers of totalitarianism. Set in a futuristic world where the government, led by the omnipresent Big Brother, surveils every aspect of citizens' lives, the novel explores themes of oppression, propaganda, and the erosion of individual freedoms. Through the protagonist, Winston Smith, Orwell paints a bleak picture of a society devoid of privacy and truth, where conformity is enforced through fear and manipulation. With its chilling portrayal of a totalitarian regime, 1984 serves as a warning against the dangers of unchecked power and the importance of preserving democratic principles.",
     "rating": 4.8
   },
   {
@@ -32,7 +32,7 @@
     "quantity": 8,
     "authorName": "Jane Austen",
     "category": "Novel",
-    "shortDescription": "A romantic novel that critiques the societal norms of 19th century England.",
+    "shortDescription": "A romantic novel that critiques the societal norms of 19th century England. Set in the English countryside, the story follows the Bennet sisters as they navigate the intricacies of courtship and marriage. Through the spirited Elizabeth Bennet and the enigmatic Mr. Darcy, Austen explores themes of love, class, and personal integrity, challenging the conventions of her time. With its witty dialogue and astute social commentary, Pride and Prejudice remains a beloved classic that continues to captivate readers with its timeless portrayal of love and society.",
     "rating": 4.7
   },
   {
@@ -41,7 +41,7 @@
     "quantity": 12,
     "authorName": "J.D. Salinger",
     "category": "Novel",
-    "shortDescription": "A story about teenage angst and alienation told by Holden Caulfield.",
+    "shortDescription": "A story about teenage angst and alienation told by Holden Caulfield. Narrated in the first person, the novel follows Holden as he wanders through New York City after being expelled from prep school. Throughout his journey, Holden grapples with feelings of isolation, disillusionment, and the search for authenticity in a world he sees as phony. Through its honest portrayal of adolescence, The Catcher in the Rye has become a classic coming-of-age story that resonates with readers of all generations.",
     "rating": 4.3
   },
   {
@@ -50,7 +50,7 @@
     "quantity": 20,
     "authorName": "J.R.R. Tolkien",
     "category": "Fantasy",
-    "shortDescription": "The prelude to the Lord of the Rings, featuring Bilbo Baggins' adventure.",
+    "shortDescription": "The prelude to the Lord of the Rings, featuring Bilbo Baggins' adventure. Set in the fictional world of Middle-earth, the novel follows Bilbo as he embarks on a quest to reclaim the Lonely Mountain from the dragon Smaug. Along the way, he encounters elves, dwarves, and the mysterious Gollum, facing challenges and discovering courage he never knew he possessed. With its richly imagined world and timeless themes of heroism and friendship, The Hobbit has enchanted readers for generations.",
     "rating": 4.9
   },
   {
@@ -59,7 +59,7 @@
     "quantity": 30,
     "authorName": "J.K. Rowling",
     "category": "Fantasy",
-    "shortDescription": "The first book in the Harry Potter series where Harry discovers he is a wizard.",
+    "shortDescription": "The first book in the Harry Potter series where Harry discovers he is a wizard. Set in the wizarding world, the novel follows Harry as he attends Hogwarts School of Witchcraft and Wizardry and uncovers the truth about his past. With its magical creatures, spellbinding adventures, and themes of friendship and bravery, Harry Potter and the Sorcerer's Stone has captivated readers of all ages.",
     "rating": 5
   },
   {
@@ -68,7 +68,8 @@
     "quantity": 25,
     "authorName": "George R.R. Martin",
     "category": "Fantasy",
-    "shortDescription": "The first book in the Song of Ice and Fire series, introducing the land of Westeros.",
+    "shortDescription": "The first book in the Song of Ice and Fire series, introducing the land of Westeros. Set in a medieval fantasy world, the novel follows the power struggles between noble houses as they vie for control of the Iron Throne. With its complex characters, intricate plots, and shocking twists, A Game of Thrones has become a cultural phenomenon, captivating readers and viewers alike with its epic scope and political intrigue.",
+
     "rating": 4.6
   },
   {
@@ -77,7 +78,7 @@
     "quantity": 13,
     "authorName": "Patrick Rothfuss",
     "category": "Fantasy",
-    "shortDescription": "A story of the magically gifted young man named Kvothe.",
+    "shortDescription": "A story of the magically gifted young man named Kvothe. Kvothe grows up as an orphaned child in a troupe of traveling performers known as the Edema Ruh. Throughout the novel, Kvothe seeks revenge on the Chandrian, a group of seven supernatural entities that killed his family and left him orphaned. The story is narrated by an adult Kvothe, who recounts his adventures to a scribe known as Chronicler. As Kvothe's story unfolds, readers are drawn into a world of magic, intrigue, and danger, where nothing is as it seems. With its richly imagined world and complex characters, The Name of the Wind is a captivating read that will leave readers eagerly awaiting the next installment in the series.",
     "rating": 4.8
   },
   {
@@ -86,7 +87,7 @@
     "quantity": 17,
     "authorName": "J.R.R. Tolkien",
     "category": "Fantasy",
-    "shortDescription": "The first volume of the Lord of the Rings trilogy.",
+    "shortDescription": "The first volume of the Lord of the Rings trilogy. Set in the fictional world of Middle-earth, the novel follows a hobbit named Frodo Baggins as he embarks on a perilous journey to destroy the One Ring. Along the way, he is joined by a fellowship of diverse companions, including humans, elves, dwarves, and wizards. Together, they face numerous challenges and adversaries, including the dark lord Sauron and his minions. With its epic scope, rich mythology, and themes of friendship and heroism, The Fellowship of the Ring is a timeless classic that continues to inspire readers around the world.",
     "rating": 5
   },
   {
@@ -95,7 +96,7 @@
     "quantity": 18,
     "authorName": "Yuval Noah Harari",
     "category": "History",
-    "shortDescription": "A comprehensive history of the human species.",
+    "shortDescription": "A comprehensive history of the human species. Spanning from the emergence of Homo sapiens in Africa to the present day, the book explores key milestones in human evolution, such as the Agricultural Revolution, the rise of civilizations, and the development of science and technology. With its thought-provoking insights and engaging writing style, Sapiens challenges readers to rethink their understanding of humanity's past and consider the future trajectory of our species.",
     "rating": 4.7
   },
   {
@@ -104,7 +105,7 @@
     "quantity": 9,
     "authorName": "Tara Westover",
     "category": "History",
-    "shortDescription": "A memoir about a woman who grows up in a strict and abusive household in rural Idaho but eventually escapes to learn about the wider world through education.",
+    "shortDescription": "A memoir about a woman who grows up in a strict and abusive household in rural Idaho but eventually escapes to learn about the wider world through education. Raised by devout survivalists who reject formal schooling and modern medicine, Tara Westover's childhood is marked by isolation, poverty, and physical and emotional abuse. Despite these challenges, she eventually teaches herself enough to gain admission to Brigham Young University, where she begins to question her upbringing and pursue a different path. With its raw honesty and powerful storytelling, Educated is a testament to the resilience of the human spirit and the transformative power of education.",
     "rating": 4.6
   },
   {
@@ -113,7 +114,7 @@
     "quantity": 14,
     "authorName": "Michelle Obama",
     "category": "History",
-    "shortDescription": "The memoir of former First Lady of the United States, Michelle Obama.",
+    "shortDescription": "The memoir of former First Lady of the United States, Michelle Obama. In Becoming, Obama reflects on her childhood in Chicago, her career as a lawyer and public servant, and her time in the White House. With candor and grace, she shares the joys and challenges of her journey, from balancing work and family to advocating for issues like education, health, and equality. Through her personal anecdotes and insights, Obama inspires readers to embrace their own stories, overcome obstacles, and make a difference in the world.",
     "rating": 4.9
   },
   {
@@ -122,7 +123,7 @@
     "quantity": 11,
     "authorName": "David McCullough",
     "category": "History",
-    "shortDescription": "The story of the Wright brothers and their invention of the airplane.",
+    "shortDescription": "The story of the Wright brothers and their invention of the airplane. Orville and Wilbur Wright were two brothers from Ohio who, through perseverance, ingenuity, and sheer determination, achieved the first powered, controlled flight in history. With meticulous research and vivid storytelling, McCullough brings to life the challenges and triumphs of the Wright brothers' journey, from their early experiments in aviation to their historic flight at Kitty Hawk. Through their pioneering spirit and relentless pursuit of their dreams, the Wright brothers forever changed the course of human history.",
     "rating": 4.5
   },
   {
@@ -131,7 +132,7 @@
     "quantity": 16,
     "authorName": "Laura Hillenbrand",
     "category": "History",
-    "shortDescription": "A World War II story of survival, resilience, and redemption.",
+    "shortDescription": "A World War II story of survival, resilience, and redemption. Based on the true story of Louis Zamperini, an Olympic athlete turned bombardier who survives a plane crash in the Pacific Ocean, only to be captured by the Japanese and sent to a series of brutal prisoner-of-war camps. Despite enduring unimaginable suffering and hardship, Zamperini refuses to be broken, drawing on his inner strength and resilience to survive against all odds. With its gripping narrative and unforgettable characters, Unbroken is a testament to the power of the human spirit and the enduring hope of redemption.",
     "rating": 4.8
   },
   {
@@ -140,7 +141,7 @@
     "quantity": 22,
     "authorName": "Charles Duhigg",
     "category": "Thriller",
-    "shortDescription": "An exploration of the science behind why habits exist and how they can be changed.",
+    "shortDescription": "An exploration of the science behind why habits exist and how they can be changed. Drawing on research from psychology, neuroscience, and sociology, Duhigg explains how habits are formed, how they influence our behavior, and how they can be reshaped to improve our lives. With its engaging anecdotes and practical advice, The Power of Habit offers readers valuable insights into the nature of habits and the potential for personal transformation. It delves into case studies of individuals and organizations, illustrating how understanding and changing habits can lead to profound changes in personal and professional life. Duhigg explores the habit loop—cue, routine, and reward—and provides strategies for identifying cues, changing routines, and designing rewards to create positive habits. Through compelling storytelling and rigorous research, The Power of Habit offers readers a roadmap for harnessing the power of habits to achieve lasting change.",
     "rating": 4.4
   },
   {
@@ -149,7 +150,7 @@
     "quantity": 24,
     "authorName": "James Clear",
     "category": "Thriller",
-    "shortDescription": "A guide to breaking bad behaviors and adopting good ones in four steps.",
+    "shortDescription": "A guide to breaking bad behaviors and adopting good ones in four steps. In Atomic Habits, Clear presents a framework for building better habits by focusing on small changes that compound over time. He emphasizes the importance of identity-based habits, where behavior change is driven by a shift in self-perception. With practical strategies and actionable advice, Clear demonstrates how to make tiny adjustments that lead to remarkable results. Through anecdotes, research, and real-world examples, Atomic Habits offers readers a clear path to transforming their habits and achieving their goals.",
     "rating": 4.9
   },
   {
@@ -158,7 +159,7 @@
     "quantity": 15,
     "authorName": "Alex Michaelides",
     "category": "Thriller",
-    "shortDescription": "A psychological thriller about a woman who shoots her husband and then stops speaking.",
+    "shortDescription": "A psychological thriller about a woman who shoots her husband and then stops speaking. Alicia Berenson, a talented painter, is accused of murdering her husband, Gabriel, a successful fashion photographer. After the murder, Alicia refuses to speak, leading to her confinement in a psychiatric institution. Theo Faber, a psychotherapist fascinated by Alicia's case, takes on her treatment with the hope of uncovering the truth behind her silence. As Theo delves into Alicia's past and unravels the events leading up to the murder, he discovers dark secrets that challenge his understanding of sanity and madness. With its gripping plot twists and complex characters, The Silent Patient keeps readers on the edge of their seats until the very end.",
     "rating": 4.3
   },
   {
@@ -167,7 +168,7 @@
     "quantity": 20,
     "authorName": "Gillian Flynn",
     "category": "Thriller",
-    "shortDescription": "A thriller that examines the complexities of marriage and the dangerous secrets couples keep from each other.",
+    "shortDescription": "A thriller that examines the complexities of marriage and the dangerous secrets couples keep from each other. On their fifth wedding anniversary, Nick Dunne reports his wife, Amy, missing, sparking a media frenzy and a police investigation. As the search for Amy intensifies, secrets and lies are revealed, casting doubt on Nick's innocence and raising questions about the true nature of their relationship. Through alternating perspectives and unreliable narrators, Flynn keeps readers guessing until the shocking truth is finally unveiled. With its dark humor and twisted plot twists, Gone Girl is a compelling psychological thriller that explores the dark side of love and marriage.",
     "rating": 4.5
   },
   {
@@ -176,7 +177,7 @@
     "quantity": 18,
     "authorName": "Paula Hawkins",
     "category": "Thriller",
-    "shortDescription": "A psychological thriller about a woman who becomes involved in a missing person's investigation.",
+    "shortDescription": "A psychological thriller about a woman who becomes involved in a missing person's investigation. Rachel Watson, a troubled alcoholic, takes the same train to London every day, passing by her old house where her ex-husband now lives with his new wife and child. As Rachel becomes entangled in the lives of the people she observes from the train, she becomes embroiled in a missing person's investigation that forces her to confront her own demons. With its unreliable narrator and twisted plot, The Girl on the Train keeps readers guessing until the final shocking reveal.",
     "rating": 4.2
   },
   {
@@ -185,7 +186,7 @@
     "quantity": 30,
     "authorName": "Andy Weir",
     "category": "Sci-Fi",
-    "shortDescription": "A science fiction novel about an astronaut stranded on Mars and his struggle for survival.",
+    "shortDescription": "A science fiction novel about an astronaut stranded on Mars and his struggle for survival. Mark Watney, a botanist and mechanical engineer, is left stranded on Mars after a dust storm forces his crew to evacuate the planet. With limited supplies and communication, Watney must rely on his ingenuity and resourcefulness to survive until rescue is possible. Through his humor and determination, Watney faces numerous challenges, from growing food to repairing equipment, as he fights for his life on the desolate planet. With its blend of hard science and thrilling adventure, The Martian is a gripping tale of resilience and the power of the human spirit.",
     "rating": 4.8
   },
   {
@@ -194,7 +195,7 @@
     "quantity": 25,
     "authorName": "Frank Herbert",
     "category": "Sci-Fi",
-    "shortDescription": "A science fiction novel about a young nobleman who becomes embroiled in a struggle to control the desert planet Arrakis.",
+    "shortDescription": "A science fiction novel about a young nobleman who becomes embroiled in a struggle to control the desert planet Arrakis. Set in a distant future where interstellar travel is possible and powerful noble houses vie for control of valuable resources, Dune follows Paul Atreides, the young scion of House Atreides, as he navigates the complex politics of Arrakis. With its intricate world-building, political intrigue, and philosophical themes, Dune has become a landmark work of science fiction that continues to influence writers and filmmakers to this day.",
     "rating": 4.7
   },
   {
@@ -203,17 +204,17 @@
     "quantity": 12,
     "authorName": "William Gibson",
     "category": "Sci-Fi",
-    "shortDescription": "A science fiction novel that tells the story of a washed-up computer hacker hired for one last job.",
-    "rating": 4.4
+    "shortDescription": "A science fiction novel that tells the story of a washed-up computer hacker hired for one last job. Case, a former console cowboy who has been stripped of his cybernetic enhancements, is hired by a mysterious employer to carry out a complex heist in cyberspace. With the help of Molly, a street samurai with razor-sharp reflexes, Case navigates the dangerous world of high-tech espionage, encountering artificial intelligences, virtual realities, and powerful corporate interests. Set in a dystopian future where megacorporations wield immense power and cyberspace is the new frontier, Neuromancer is a groundbreaking work that explores the intersection of technology, identity, and society.",
+    "rating": 4.6
   },
   {
-    "image": "https://i.ibb.co/L06BWgM/Foundation.jpg",
+    "image": "https://i.ibb.co/fN5qKxg/Foundation.jpg",
     "name": "Foundation",
-    "quantity": 14,
+    "quantity": 16,
     "authorName": "Isaac Asimov",
     "category": "Sci-Fi",
-    "shortDescription": "A science fiction series about the fall and rise of a galactic empire.",
-    "rating": 4.6
+    "shortDescription": "The first book in the Foundation series, exploring the fall of a galactic empire and the rise of a new civilization. Set in a distant future where humanity has colonized the galaxy, Foundation follows mathematician Hari Seldon as he predicts the impending collapse of the Galactic Empire. In an effort to preserve knowledge and shorten the subsequent Dark Age, Seldon establishes the Foundation—a scientific and cultural hub on the edge of the galaxy. With its epic scope, intricate plot, and visionary ideas, Foundation is a seminal work of science fiction that has inspired generations of readers and writers.",
+    "rating": 4.9
   },
   {
     "image": "https://i.ibb.co/LxwH1tX/Brave-New-World.jpg",
@@ -221,7 +222,7 @@
     "quantity": 20,
     "authorName": "Aldous Huxley",
     "category": "Sci-Fi",
-    "shortDescription": "A dystopian novel that imagines a future world of genetically modified citizens and an intelligence-based social hierarchy.",
+    "shortDescription": "A dystopian novel that imagines a future world of genetically modified citizens and an intelligence-based social hierarchy. Set in a technologically advanced society where genetic engineering, social conditioning, and mind-altering drugs are used to maintain social stability and control, Brave New World explores themes of individuality, freedom, and the price of happiness. Through its provocative vision of a future where pleasure is prioritized over personal autonomy, Huxley's novel continues to spark discussion and debate about the ethics of science and the nature of humanity.",
     "rating": 4.5
   },
   {
@@ -230,7 +231,7 @@
     "quantity": 28,
     "authorName": "Dan Brown",
     "category": "Horror",
-    "shortDescription": "A mystery thriller that follows symbologist Robert Langdon as he uncovers a conspiracy within the Catholic Church.",
+    "shortDescription": "A mystery thriller that follows symbologist Robert Langdon as he uncovers a conspiracy within the Catholic Church. When Langdon is summoned to the Louvre Museum to examine a cryptic message left by a murdered curator, he finds himself entangled in a web of secrets, codes, and hidden agendas. As Langdon races to decipher the clues and unravel the truth, he becomes a target of a shadowy organization determined to protect an ancient secret. With its blend of history, art, and religious symbolism, The Da Vinci Code is a fast-paced thriller that keeps readers guessing until the final revelation.",
     "rating": 4.3
   },
   {
@@ -239,7 +240,7 @@
     "quantity": 22,
     "authorName": "Stephen King",
     "category": "Horror",
-    "shortDescription": "A horror novel about a family staying in an isolated hotel where the father descends into madness.",
+    "shortDescription": "A horror novel about a family staying in an isolated hotel where the father descends into madness. Jack Torrance, a struggling writer and recovering alcoholic, accepts a job as the winter caretaker of the Overlook Hotel, a remote resort in the Colorado Rockies. As Jack, his wife Wendy, and their young son Danny settle into the hotel, they are haunted by eerie visions and supernatural forces that threaten to consume them. As the winter snow traps them in the hotel, Jack's sanity begins to unravel, leading to a terrifying climax of madness and violence. With its atmospheric setting and psychological depth, The Shining is a chilling masterpiece of horror fiction.",
     "rating": 4.6
   },
   {
@@ -248,7 +249,7 @@
     "quantity": 16,
     "authorName": "Bram Stoker",
     "category": "Horror",
-    "shortDescription": "A Gothic horror novel that tells the story of Count Dracula's attempt to move from Transylvania to England.",
+    "shortDescription": "A Gothic horror novel that tells the story of Count Dracula's attempt to move from Transylvania to England. When Jonathan Harker, a young solicitor, travels to Transylvania to assist Count Dracula with a real estate transaction, he becomes trapped in the vampire's castle and discovers the true nature of his host. As Dracula sets his sights on London, Harker and a group of allies, including Professor Abraham Van Helsing, race to stop him before he can unleash his reign of terror on the unsuspecting city. With its blend of folklore, suspense, and terror, Dracula remains one of the most enduring and influential works of horror literature.",
     "rating": 4.4
   },
   {
@@ -257,7 +258,7 @@
     "quantity": 19,
     "authorName": "Mary Shelley",
     "category": "Horror",
-    "shortDescription": "A Gothic novel that tells the story of a young scientist who creates a sapient creature in an unorthodox scientific experiment.",
+    "shortDescription": "A Gothic novel that tells the story of a young scientist who creates a sapient creature in an unorthodox scientific experiment. Victor Frankenstein, a brilliant but misguided scientist, becomes obsessed with the idea of creating life from death. Using stolen body parts and forbidden knowledge, he assembles a creature and brings it to life, only to recoil in horror at the monstrous being he has unleashed. As the creature struggles to find its place in a hostile world, it seeks revenge against its creator, leading to a tragic confrontation that explores themes of ambition, responsibility, and the nature of humanity. With its blend of horror, philosophy, and social commentary, Frankenstein continues to captivate readers with its timeless tale of creation and destruction.",
     "rating": 4.5
   },
   {
@@ -266,7 +267,7 @@
     "quantity": 14,
     "authorName": "Shirley Jackson",
     "category": "Horror",
-    "shortDescription": "A horror novel that explores the eerie occurrences in an old mansion.",
+    "shortDescription": "A horror novel that explores the eerie occurrences in an old mansion. The Haunting of Hill House follows a group of individuals who stay at Hill House to investigate its purported supernatural phenomena. As they spend more time within its walls, they experience increasingly bizarre and terrifying events that challenge their understanding of reality. Strange noises, inexplicable cold spots, and ghostly apparitions plague the inhabitants, driving them to the brink of madness. With its atmospheric setting and psychological depth, The Haunting of Hill House is a masterclass in Gothic horror that continues to unsettle readers with its ambiguity and suspense.",
     "rating": 4.3
   }
 ]
