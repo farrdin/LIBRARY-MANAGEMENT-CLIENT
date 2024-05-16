@@ -1,15 +1,20 @@
 import ReactiveButton from "reactive-button";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useParams } from "react-router-dom";
+import ReactStarsRating from "react-awesome-stars-rating";
+import { AuthContext } from "../Context/AuthProvider";
+import { toast } from "react-toastify";
 
 const BookDetail = () => {
   const { id } = useParams();
   const [details, setDetails] = useState([]);
   const [startDate, setStartDate] = useState(new Date());
+  const { user } = useContext(AuthContext);
+
   useEffect(() => {
-    fetch("/Api.json")
+    fetch("http://localhost:5000/all")
       .then((res) => res.json())
       .then((data) => {
         const book = data.find((book) => book._id === id);
@@ -19,11 +24,41 @@ const BookDetail = () => {
 
   const handleBorrowBook = (e) => {
     e.preventDefault();
-    const form = new FormData(e.currentTarget);
-    const email = form.get("email");
-    const name = form.get("name");
-    const date = startDate;
-    console.log(email, name, date);
+    const form = e.target;
+    const email = user?.email;
+    const name = user?.displayName;
+    const returnDate = form.date.value
+      ? new Date(form.date.value).toLocaleDateString(
+          ("en-US", { month: "2-digit", day: "2-digit", year: "numeric" })
+        )
+      : "";
+    const borrowDate = startDate.toLocaleDateString(
+      ("en-US", { month: "2-digit", day: "2-digit", year: "numeric" })
+    );
+    const BorrowItem = {
+      id: details._id,
+      bookName: details.name,
+      bookImage: details.image,
+      bookCategory: details?.category?.cname,
+      email: email,
+      name: name,
+      borrow: borrowDate,
+      return: returnDate,
+    };
+
+    fetch("http://localhost:5000/borrowed", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(BorrowItem),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          toast.success("Booked Succesfully");
+        }
+      });
   };
 
   return (
@@ -51,11 +86,20 @@ const BookDetail = () => {
             {details.shortDescription}
           </p>
         </div>
-        <div className="flex gap-3">
+        <div className="flex items-center">
           <span className="text-base text-[#23BE0A] font-medium bg-[#23BE0A0D] p-1">
-            #Rating : {details.rating}
+            #Rating:
           </span>
-          <span className="text-base text-[#23BE0A] font-medium bg-[#23BE0A0D] p-1">
+          <span className="w-full text-base text-[#23BE0A] font-medium bg-[#23BE0A0D] p-1">
+            <ReactStarsRating
+              isEdit={false}
+              primaryColor="yellow"
+              secondaryColor="gray"
+              className="flex"
+              value={details.rating}
+            />
+          </span>
+          <span className="text-center w-full text-base text-[#23BE0A] font-medium bg-[#23BE0A0D] p-1">
             #Quantity : {details.quantity}
           </span>
         </div>
@@ -80,10 +124,11 @@ const BookDetail = () => {
               </h3>
               <form onSubmit={handleBorrowBook}>
                 <div className="col-span-full sm:col-span-3">
-                  <label htmlFor="email" className="text-sm">
+                  <label htmlFor="name" className="text-sm">
                     Your Name
                   </label>
                   <input
+                    defaultValue={user.displayName}
                     required
                     name="name"
                     id="name "
@@ -94,9 +139,10 @@ const BookDetail = () => {
                 </div>
                 <div className="col-span-full sm:col-span-3 mb-10">
                   <label htmlFor="email" className="text-sm">
-                    Email
+                    Your Email
                   </label>
                   <input
+                    defaultValue={user.email}
                     required
                     name="email"
                     id="email"
@@ -105,24 +151,38 @@ const BookDetail = () => {
                     className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
                   />
                 </div>
-                <div>
-                  <label
-                    htmlFor="date-picker"
-                    className="mr-2 text-base font-bold"
-                  >
-                    Select a date:
-                  </label>
-                  <DatePicker
-                    id="date-picker"
-                    placeholderText="Select a date"
-                    required
-                    isClearable
-                    selected={startDate}
-                    onChange={(date) => setStartDate(date)}
-                  />
-                  {!startDate && (
-                    <div style={{ color: "red" }}>This field is required</div>
-                  )}
+                <div className="flex flex-col md:flex-row gap-5">
+                  <div>
+                    <label for="date" className="mr-2 text-base font-bold">
+                      Select Return Date:
+                    </label>
+                    <input
+                      required
+                      name="date"
+                      id="date"
+                      type="date"
+                      className="px-6 dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="date-picker"
+                      className="mr-2 text-base font-bold"
+                    >
+                      Borrow Date:
+                    </label>
+                    <DatePicker
+                      id="date-picker"
+                      placeholderText="Select a date"
+                      required
+                      isClearable
+                      selected={startDate}
+                      onChange={(date) => setStartDate(date)}
+                    />
+                    {!startDate && (
+                      <div style={{ color: "red" }}>This field is required</div>
+                    )}
+                  </div>
                 </div>
                 <div className="modal-action flex justify-center gap-5">
                   <input className="btn" type="submit" value="Submit" />

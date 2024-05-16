@@ -7,7 +7,7 @@ const Categories = () => {
   const [uniqueCategories, setUniqueCategories] = useState([]);
 
   useEffect(() => {
-    fetch("Api.json")
+    fetch("http://localhost:5000/all")
       .then((res) => res.json())
       .then((data) => {
         const extractedCategories = data.map((item) => item.category);
@@ -20,7 +20,10 @@ const Categories = () => {
       });
   }, []);
   return (
-    <div id="category" className="grid grid-cols-3 gap-4">
+    <div
+      id="category"
+      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+    >
       {uniqueCategories.map((categoryName, index) => {
         const category = categories.find((cat) => cat.cname === categoryName);
         return (

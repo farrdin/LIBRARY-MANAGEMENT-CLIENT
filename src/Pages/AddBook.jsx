@@ -1,26 +1,60 @@
-import ReactiveButton from "reactive-button";
+import { toast } from "react-toastify";
 
 const AddBook = () => {
-  const handleAddBook = () => {};
+  const handleAddBook = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.book.value;
+    const author = form.author.value;
+    const category = form.category.value;
+    const rating = form.rating.value;
+    const description = form.description.value;
+    const quantity = form.quantity.value;
+    const photo = form.photo.value;
+    const addItem = {
+      bName: name,
+      aName: author,
+      category: category,
+      rating: rating,
+      description: description,
+      quantity: quantity,
+      image: photo,
+    };
+
+    fetch("http://localhost:5000/add", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(addItem),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          toast.success("Booked Succesfully");
+        }
+      });
+  };
 
   return (
     <div className="mt-20">
       <section className="p-10 bg-[#E6E6FA] rounded-2xl shadow-xl">
+        <div className="space-y-2 col-span-full lg:col-span-1">
+          <h1 className="font-semibold text-4xl text-center text-[#4572DB]">
+            Add New Books
+          </h1>
+        </div>
         <form
           onSubmit={handleAddBook}
           className="container flex flex-col mx-auto space-y-12"
         >
-          <div className="space-y-2 col-span-full lg:col-span-1">
-            <h1 className="font-semibold text-4xl text-center text-[#4572DB]">
-              Add New Books
-            </h1>
-          </div>
           <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
             <div className="col-span-full sm:col-span-3">
-              <label htmlFor="firstname" className="text-sm">
+              <label for="book" className="text-sm">
                 Book Name
               </label>
               <input
+                name="book"
                 id="Book"
                 type="text"
                 placeholder="Book name"
@@ -28,10 +62,11 @@ const AddBook = () => {
               />
             </div>
             <div className="col-span-full sm:col-span-3">
-              <label htmlFor="lastname" className="text-sm">
+              <label for="author" className="text-sm">
                 Author Name
               </label>
               <input
+                name="author"
                 id="author"
                 type="text"
                 placeholder="Author name"
@@ -39,10 +74,11 @@ const AddBook = () => {
               />
             </div>
             <div className="col-span-full sm:col-span-3">
-              <label htmlFor="email" className="text-sm">
+              <label for="category" className="text-sm">
                 Category
               </label>
               <input
+                name="category"
                 id="category"
                 type="category"
                 placeholder="Category"
@@ -50,10 +86,11 @@ const AddBook = () => {
               />
             </div>
             <div className="col-span-full sm:col-span-3">
-              <label htmlFor="email" className="text-sm">
+              <label for="rating" className="text-sm">
                 Rating
               </label>
               <input
+                name="rating"
                 id="rating"
                 type="rating"
                 placeholder="Rating"
@@ -61,10 +98,11 @@ const AddBook = () => {
               />
             </div>
             <div className="col-span-full">
-              <label htmlFor="address" className="text-sm">
+              <label for="description" className="text-sm">
                 Description
               </label>
               <textarea
+                name="description"
                 id="address"
                 type="text"
                 placeholder="Description"
@@ -72,35 +110,36 @@ const AddBook = () => {
               />
             </div>
             <div className="col-span-full sm:col-span-2">
-              <label htmlFor="city" className="text-sm">
+              <label for="quantity" className="text-sm">
                 Quantity
               </label>
               <input
-                id="city"
+                name="quantity"
+                id="quantity"
                 type="text"
                 placeholder="Amount"
                 className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
               />
             </div>
             <div className="col-span-full sm:col-span-4">
-              <label htmlFor="state" className="text-sm">
+              <label for="photo" className="text-sm">
                 Image URL
               </label>
               <input
-                id="state"
+                name="photo"
+                id="photo"
                 type="text"
                 placeholder="Image Link"
                 className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
               />
             </div>
-          </div>
-          <div className="flex justify-center">
-            <ReactiveButton
-              shadow
-              rounded
-              idleText={<span className="text-lg font-bold">Add Book</span>}
-              size="large"
-            />
+            <div className="flex justify-center">
+              <input
+                type="submit"
+                className="btn btn-secondary"
+                value="Submit"
+              />
+            </div>
           </div>
         </form>
       </section>

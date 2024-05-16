@@ -9,7 +9,7 @@ const CategoryCard = () => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    fetch("/Api.json")
+    fetch("http://localhost:5000/all")
       .then((res) => res.json())
       .then((data) => {
         const filteredBooks = data.filter(
