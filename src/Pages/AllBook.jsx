@@ -13,7 +13,6 @@ const AllBook = () => {
       .then((res) => res.json())
       .then((data) => setAddBooks(data));
   }, []);
-  console.log(addBooks);
 
   return (
     <div className="mt-20">
@@ -26,7 +25,7 @@ const AllBook = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {addBooks.map((a) => (
-          <div className="card bg-base-200 shadow-xl p-5">
+          <div className="card bg-base-200 shadow-xl p-5" key={a._id}>
             <figure>
               <img src={a.image} alt="Shoes" />
             </figure>
@@ -35,7 +34,7 @@ const AllBook = () => {
               <p>Author Name : {a.aName}</p>
               <p>Category : {a.category}</p>
               <p>Ratings : {a.rating}</p>
-              <Link to="/update">
+              <Link to={`/update/${a._id}`}>
                 <ReactiveButton
                   shadow
                   rounded

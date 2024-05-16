@@ -24,7 +24,7 @@ const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-        path: "add",
+        path: "/add",
         element: (
           <PrivateRoute>
             <AddBook></AddBook>
@@ -32,7 +32,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "all",
+        path: "/all",
         element: (
           <PrivateRoute>
             <AllBook></AllBook>
@@ -40,7 +40,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "details/:id",
+        path: "/details/:id",
         element: (
           <PrivateRoute>
             <BookDetail></BookDetail>
@@ -48,7 +48,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "borrow",
+        path: "/borrow",
         element: (
           <PrivateRoute>
             <Borrowed></Borrowed>
@@ -56,15 +56,15 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "login",
+        path: "/login",
         element: <Login></Login>,
       },
       {
-        path: "register",
+        path: "/register",
         element: <Register></Register>,
       },
       {
-        path: "update",
+        path: "update/:id",
         element: (
           <PrivateRoute>
             <Update></Update>
@@ -72,7 +72,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "about",
+        path: "/about",
         element: <About></About>,
       },
       {
