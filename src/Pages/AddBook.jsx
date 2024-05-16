@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import { toast } from "react-toastify";
+import { AuthContext } from "../Context/AuthProvider";
 
 const AddBook = () => {
+  const { user } = useContext(AuthContext);
   const handleAddBook = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -11,7 +14,9 @@ const AddBook = () => {
     const description = form.description.value;
     const quantity = form.quantity.value;
     const photo = form.photo.value;
+    const email = user?.email;
     const addItem = {
+      email: email,
       bName: name,
       aName: author,
       category: category,
