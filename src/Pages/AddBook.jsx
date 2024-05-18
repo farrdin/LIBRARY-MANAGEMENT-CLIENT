@@ -17,13 +17,13 @@ const AddBook = () => {
     const email = user?.email;
     const addItem = {
       email: email,
-      bName: name,
-      aName: author,
-      category: category,
-      rating: rating,
-      description: description,
-      quantity: quantity,
       image: photo,
+      name: name,
+      quantity: quantity,
+      authorName: author,
+      category: category,
+      shortDescription: description,
+      rating: rating,
     };
 
     fetch("http://localhost:5000/add", {
@@ -45,7 +45,7 @@ const AddBook = () => {
     <div className="mt-20">
       <section className="p-10 bg-[#E6E6FA] rounded-2xl shadow-xl">
         <div className="space-y-2 col-span-full lg:col-span-1">
-          <h1 className="font-semibold text-4xl text-center text-[#4572DB]">
+          <h1 className="font-semibold text-4xl text-center text-[#4572DB] mb-10">
             Add New Books
           </h1>
         </div>
@@ -59,6 +59,7 @@ const AddBook = () => {
                 Book Name
               </label>
               <input
+                required
                 name="book"
                 id="Book"
                 type="text"
@@ -71,6 +72,7 @@ const AddBook = () => {
                 Author Name
               </label>
               <input
+                required
                 name="author"
                 id="author"
                 type="text"
@@ -83,9 +85,10 @@ const AddBook = () => {
                 Category
               </label>
               <input
+                required
                 name="category"
                 id="category"
-                type="category"
+                type="text"
                 placeholder="Category"
                 className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
               />
@@ -95,9 +98,12 @@ const AddBook = () => {
                 Rating
               </label>
               <input
+                required
+                max={5}
+                min={0}
                 name="rating"
                 id="rating"
-                type="rating"
+                type="number"
                 placeholder="Rating"
                 className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
               />
@@ -108,7 +114,7 @@ const AddBook = () => {
               </label>
               <textarea
                 name="description"
-                id="address"
+                id="description"
                 type="text"
                 placeholder="Description"
                 className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
@@ -121,7 +127,7 @@ const AddBook = () => {
               <input
                 name="quantity"
                 id="quantity"
-                type="text"
+                type="number"
                 placeholder="Amount"
                 className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
               />

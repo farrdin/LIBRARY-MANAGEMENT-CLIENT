@@ -144,19 +144,21 @@ const BookDetail = () => {
         <hr />
 
         <div className="flex-grow flex gap-3">
-          {details?.quantity > 0 ? (
-            <ReactiveButton
-              shadow
-              outline
-              onClick={() => document.getElementById("my_modal_5").showModal()}
-              idleText={
-                <span className="text-base font-medium">Borrow Book </span>
-              }
-            />
-          ) : (
-            <h1 className="text-sm font-bold text-red-600 ">
-              This book is out of stock now*
-            </h1>
+          <ReactiveButton
+            shadow
+            outline
+            onClick={() => document.getElementById("my_modal_5").showModal()}
+            idleText={
+              <span className="text-base font-medium">Borrow Book </span>
+            }
+            disabled={details?.quantity < 1}
+          />
+          {details?.quantity < 1 && (
+            <>
+              <h1 className="text-sm font-bold text-red-600">
+                This book is out of stock now*
+              </h1>
+            </>
           )}
 
           <dialog
