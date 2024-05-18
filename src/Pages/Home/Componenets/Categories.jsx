@@ -10,13 +10,11 @@ const Categories = () => {
     fetch("http://localhost:5000/all")
       .then((res) => res.json())
       .then((data) => {
-        const extractedCategories = data.map((item) => item.category);
-        setCategories(extractedCategories);
+        const cat = data.map((item) => item.category);
+        setCategories(cat);
 
-        const uniqueCats = [
-          ...new Set(extractedCategories.map((cat) => cat.cname)),
-        ];
-        setUniqueCategories(uniqueCats);
+        const uniqueC = [...new Set(cat.map((c) => c.cname))];
+        setUniqueCategories(uniqueC);
       });
   }, []);
   return (
@@ -25,7 +23,7 @@ const Categories = () => {
       className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
     >
       {uniqueCategories.map((categoryName, index) => {
-        const category = categories.find((cat) => cat.cname === categoryName);
+        const category = categories.find((c) => c.cname === categoryName);
         return (
           <div
             key={index}

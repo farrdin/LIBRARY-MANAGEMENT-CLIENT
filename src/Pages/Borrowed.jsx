@@ -13,7 +13,7 @@ const Borrowed = () => {
       .then((data) => setBorrows(data));
   }, []);
 
-  const handleReturn = (id) => {
+  const handleReturn = (id, ide) => {
     fetch(`http://localhost:5000/borrowed/${id}`, {
       method: "DELETE",
     })
@@ -23,6 +23,23 @@ const Borrowed = () => {
           toast.success("Returned Book SuccessFully");
           const remaining = borrows.filter((borrow) => borrow._id !== id);
           setBorrows(remaining);
+
+          fetch(`http://localhost:5000/all/incr/${ide}`, {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              $inc: { quantity: 1 },
+            }),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              console.log("Quantity updated successfully:", data);
+            })
+            .catch((error) => {
+              console.error("Error updating quantity:", error);
+            });
         }
       });
   };
@@ -58,7 +75,7 @@ const Borrowed = () => {
                 <td>{borrow.return}</td>
                 <td>
                   <ReactiveButton
-                    onClick={() => handleReturn(borrow._id)}
+                    onClick={() => handleReturn(borrow._id, borrow.id)}
                     size="small"
                     rounded
                     outline

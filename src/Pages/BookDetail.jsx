@@ -29,7 +29,12 @@ const BookDetail = () => {
     const name = user?.displayName;
     const returnDate = form.date.value
       ? new Date(form.date.value).toLocaleDateString(
-          ("en-US", { month: "2-digit", day: "2-digit", year: "numeric" })
+          ("en-US",
+          {
+            month: "2-digit",
+            day: "2-digit",
+            year: "numeric",
+          })
         )
       : "";
     const borrowDate = startDate.toLocaleDateString(
@@ -57,6 +62,23 @@ const BookDetail = () => {
       .then((data) => {
         if (data.insertedId) {
           toast.success("Booked Succesfully");
+        }
+      });
+
+    fetch(`http://localhost:5000/all/decr/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        $inc: { quantity: -1 },
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount > 0) {
+          toast.success("<3");
         }
       });
   };
@@ -187,7 +209,7 @@ const BookDetail = () => {
                 <div className="modal-action flex justify-center gap-5">
                   <input className="btn" type="submit" value="Submit" />
                   <form method="dialog">
-                    <button className="btn">Cancle</button>
+                    <button className="btn">Cancel</button>
                   </form>
                 </div>
               </form>
