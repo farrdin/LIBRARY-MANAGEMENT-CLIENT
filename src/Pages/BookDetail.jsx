@@ -24,65 +24,81 @@ const BookDetail = () => {
 
   const handleBorrowBook = (e) => {
     e.preventDefault();
-    const form = e.target;
-    const email = user?.email;
-    const name = user?.displayName;
-    const returnDate = form.date.value
-      ? new Date(form.date.value).toLocaleDateString(
-          ("en-US",
-          {
-            month: "2-digit",
-            day: "2-digit",
-            year: "numeric",
-          })
-        )
-      : "";
-    const borrowDate = startDate.toLocaleDateString(
-      ("en-US", { month: "2-digit", day: "2-digit", year: "numeric" })
-    );
-    const BorrowItem = {
-      id: details._id,
-      bookName: details.name,
-      bookImage: details.image,
-      bookCategory: details?.category?.cname,
-      email: email,
-      name: name,
-      borrow: borrowDate,
-      return: returnDate,
-    };
-
-    fetch("http://localhost:5000/borrowed", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(BorrowItem),
-    })
+    fetch(
+      `http://localhost:5000/borrowed?email=${encodeURIComponent(
+        user?.email
+      )}&id=${details._id}`
+    )
       .then((res) => res.json())
       .then((data) => {
-        if (data.insertedId) {
-          toast.success("Booked Succesfully");
+        if (data.find((f) => f.id === details._id)) {
+          toast.error(
+            "You have already borrowed this book. Please return it before borrowing again."
+          );
+          return;
         }
-      });
+        const form = e.target;
+        const email = user?.email;
+        const name = user?.displayName;
+        const returnDate = form.date.value
+          ? new Date(form.date.value).toLocaleDateString(
+              ("en-US",
+              {
+                month: "2-digit",
+                day: "2-digit",
+                year: "numeric",
+              })
+            )
+          : "";
+        const borrowDate = startDate.toLocaleDateString(
+          ("en-US", { month: "2-digit", day: "2-digit", year: "numeric" })
+        );
+        const BorrowItem = {
+          id: details._id,
+          bookName: details.name,
+          bookImage: details.image,
+          bookCategory: details?.category?.cname,
+          email: email,
+          name: name,
+          borrow: borrowDate,
+          return: returnDate,
+        };
 
-    fetch(`http://localhost:5000/all/decr/${id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        $inc: { quantity: -1 },
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.modifiedCount > 0) {
-          toast.success("<3");
-        }
+        fetch("http://localhost:5000/borrowed", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(BorrowItem),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.insertedId) {
+              toast.success("Borrowed Succesfully");
+            }
+          });
+
+        fetch(`http://localhost:5000/all/decr/${id}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            $inc: { quantity: -1 },
+          }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.modifiedCount > 0) {
+              setDetails((prevDetails) => ({
+                ...prevDetails,
+                quantity: prevDetails.quantity - 1,
+              }));
+            }
+          });
       });
   };
-
   return (
     <div className="mt-20  lg:flex gap-5 justify-between border p-5 rounded-xl">
       <div className="mb-10 lg:mb-0 lg:w-[45%] border rounded flex justify-center bg-[#1313130D]">
@@ -128,14 +144,21 @@ const BookDetail = () => {
         <hr />
 
         <div className="flex-grow flex gap-3">
-          <ReactiveButton
-            shadow
-            outline
-            onClick={() => document.getElementById("my_modal_5").showModal()}
-            idleText={
-              <span className="text-base font-medium">Borrow Book </span>
-            }
-          />
+          {details?.quantity > 0 ? (
+            <ReactiveButton
+              shadow
+              outline
+              onClick={() => document.getElementById("my_modal_5").showModal()}
+              idleText={
+                <span className="text-base font-medium">Borrow Book </span>
+              }
+            />
+          ) : (
+            <h1 className="text-sm font-bold text-red-600 ">
+              This book is out of stock now*
+            </h1>
+          )}
+
           <dialog
             id="my_modal_5"
             className="modal modal-bottom sm:modal-middle"
