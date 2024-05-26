@@ -1,10 +1,12 @@
+import { Helmet } from "react-helmet-async";
 import { useContext } from "react";
-import { toast } from "react-toastify";
 import { AuthContext } from "../Context/AuthProvider";
+import Swal from "sweetalert2";
 
 const AddBook = () => {
   const { user } = useContext(AuthContext);
-  const handleAddBook = (e) => {
+
+  const handleAddBook = async (e) => {
     e.preventDefault();
     const form = e.target;
     const name = form.book.value;
@@ -21,31 +23,81 @@ const AddBook = () => {
       name: name,
       quantity: quantity,
       authorName: author,
-      category: category,
+      category: { cname: category },
       shortDescription: description,
       rating: rating,
     };
 
-    fetch("http://localhost:5000/add", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success ml-2",
+        cancelButton: "btn btn-error mr-2",
       },
-      body: JSON.stringify(addItem),
-    })
-      .then((res) => res.json())
-      .then((data) => {
+      buttonsStyling: false,
+    });
+
+    const result = await swalWithBootstrapButtons.fire({
+      title: "Are you sure want to Add this book?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, add it!",
+      cancelButtonText: "cancel!",
+      reverseButtons: true,
+    });
+
+    if (result.isConfirmed) {
+      try {
+        const response = await fetch("http://localhost:5000/all", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(addItem),
+        });
+        const data = await response.json();
         if (data.insertedId) {
-          toast.success("Booked Succesfully");
+          form.reset();
+          swalWithBootstrapButtons.fire({
+            title: "Successfully!",
+            text: "Your book has been added.",
+            icon: "success",
+            timer: 2000,
+          });
+        } else {
+          Swal.fire({
+            title: "Error!",
+            text: "Failed to add the book.",
+            icon: "error",
+            confirmButtonText: "OK",
+          });
         }
+      } catch (error) {
+        console.error("Error adding book:", error);
+        Swal.fire({
+          title: "Error!",
+          text: "An error occurred while adding the book.",
+          icon: "error",
+          confirmButtonText: "OK",
+        });
+      }
+    } else if (result.dismiss === Swal.DismissReason.cancel) {
+      swalWithBootstrapButtons.fire({
+        title: "Cancelled",
+        text: "Your book addition was cancelled.",
+        icon: "error",
       });
+    }
   };
 
   return (
     <div className="mt-20">
-      <section className="p-10 bg-[#E6E6FA] rounded-2xl shadow-xl">
+      <Helmet>
+        <title>KS | Add Book</title>
+      </Helmet>
+      <section className="p-10 rounded-2xl shadow-xl">
         <div className="space-y-2 col-span-full lg:col-span-1">
-          <h1 className="font-semibold text-4xl text-center text-[#4572DB] mb-10">
+          <h1 className="font-semibold text-4xl text-center text-[#4F5CC1] mb-10">
             Add New Books
           </h1>
         </div>
@@ -101,6 +153,7 @@ const AddBook = () => {
                 required
                 max={5}
                 min={0}
+                step={0.1}
                 name="rating"
                 id="rating"
                 type="number"
@@ -113,6 +166,7 @@ const AddBook = () => {
                 Description
               </label>
               <textarea
+                required
                 name="description"
                 id="description"
                 type="text"
@@ -125,6 +179,7 @@ const AddBook = () => {
                 Quantity
               </label>
               <input
+                required
                 name="quantity"
                 id="quantity"
                 type="number"
@@ -137,6 +192,7 @@ const AddBook = () => {
                 Image URL
               </label>
               <input
+                required
                 name="photo"
                 id="photo"
                 type="text"
@@ -144,11 +200,11 @@ const AddBook = () => {
                 className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
               />
             </div>
-            <div className="flex justify-center">
+            <div className="col-span-full">
               <input
                 type="submit"
-                className="btn btn-secondary"
-                value="Submit"
+                className="btn bg-[#4F5CC1] w-full"
+                value="ADD BOOK"
               />
             </div>
           </div>

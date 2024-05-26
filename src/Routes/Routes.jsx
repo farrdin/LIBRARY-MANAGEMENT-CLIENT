@@ -12,6 +12,7 @@ import About from "../Pages/About";
 import Error from "../Pages/Error";
 import PrivateRoute from "./PrivateRoute";
 import CategoryCard from "../Pages/CategoryCard";
+import UpdateProfile from "../Pages/UpdateProfile";
 
 const router = createBrowserRouter([
   {
@@ -78,6 +79,14 @@ const router = createBrowserRouter([
       {
         path: "/category/:categoryName",
         element: <CategoryCard></CategoryCard>,
+      },
+      {
+        path: "/updateprofile",
+        element: (
+          <PrivateRoute>
+            <UpdateProfile></UpdateProfile>
+          </PrivateRoute>
+        ),
       },
     ],
   },

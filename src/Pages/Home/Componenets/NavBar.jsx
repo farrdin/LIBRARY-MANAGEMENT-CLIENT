@@ -77,8 +77,14 @@ const NavBar = () => {
             {nav}
           </ul>
         </div>
-        <Link to="/">
-          <a className="btn btn-ghost text-xl">Knowledge Shelf</a>
+        <Link to="/" className="flex items-center">
+          <img src="https://i.ibb.co/jbPptgf/logo.png" className="h-14" />
+          <a
+            className="text-xl font-semibold hover:border-b-4 hover:
+          rounded-xl hover:p-2 hover:bg-[#2B3440] hover:text-white hover: border-black hover:shadow-lg"
+          >
+            Knowledge Shelf
+          </a>
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -108,7 +114,7 @@ const NavBar = () => {
               className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
             >
               <li>
-                <Link to="/updateProfile" className="justify-between">
+                <Link to="/updateprofile" className="justify-between">
                   {!user.displayName ? user.email : user.displayName}
                   <span className="badge text-[10px]">Update info</span>
                 </Link>

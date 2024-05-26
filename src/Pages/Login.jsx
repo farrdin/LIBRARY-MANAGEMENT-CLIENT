@@ -1,15 +1,19 @@
-import { useContext } from "react";
-import { FaFacebook, FaGithub } from "react-icons/fa";
+import { Helmet } from "react-helmet-async";
+import { useContext, useState } from "react";
+import { FaEye, FaEyeSlash, FaFacebook, FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../Context/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
-  const { logIn, googleLogIn, gitHubLogIn, facebookLogin } =
-    useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
+  const [showPass, setShowPass] = useState(false);
+
+  const { logIn, googleLogIn, gitHubLogIn, facebookLogin } =
+    useContext(AuthContext);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -19,11 +23,12 @@ const Login = () => {
     logIn(email, password)
       .then((result) => {
         console.log(result.user);
-        {
-          toast.success("Logged In Successfully", {
-            theme: "colored",
-          });
-        }
+        Swal.fire({
+          title: "Congratulations!",
+          text: "Signed In  Successfully!",
+          icon: "success",
+          timer: 2000,
+        });
         e.target.reset();
         setTimeout(() => {
           navigate(location?.state ? location.state : "/");
@@ -38,6 +43,12 @@ const Login = () => {
     googleLogIn()
       .then((result) => {
         console.log(result.user);
+        Swal.fire({
+          title: "Congratulations!",
+          text: "Google Signed In  Successfully with!",
+          icon: "success",
+          timer: 2000,
+        });
       })
       .catch((error) => {
         console.error(error);
@@ -47,6 +58,12 @@ const Login = () => {
     gitHubLogIn()
       .then((result) => {
         console.log(result.user);
+        Swal.fire({
+          title: "Congratulations!",
+          text: "Github Signed In  Successfully with!",
+          icon: "success",
+          timer: 2000,
+        });
       })
       .catch((error) => {
         console.error(error);
@@ -56,6 +73,12 @@ const Login = () => {
     facebookLogin()
       .then((result) => {
         console.log(result.user);
+        Swal.fire({
+          title: "Congratulations!",
+          text: "Facebook Signed In  Successfully with!",
+          icon: "success",
+          timer: 2000,
+        });
       })
       .catch((error) => {
         console.error(error);
@@ -64,6 +87,9 @@ const Login = () => {
 
   return (
     <div className="border p-5 m-10 rounded-3xl bg-base-300 flex flex-col md:flex-row mt-28">
+      <Helmet>
+        <title>KS | LogIn</title>
+      </Helmet>
       <div className="w-full mx-auto max-w-md p-8 space-y-3 dark:text-gray-800">
         <h1 className="text-2xl font-bold text-center text-[#4B7BEC]">
           Sing In to Continue Access
@@ -81,17 +107,27 @@ const Login = () => {
               className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
             />
           </div>
-          <div className="space-y-1 text-sm">
+          <div className="space-y-1 text-sm relative">
             <label htmlFor="password" className="block dark:text-gray-600">
               Password
             </label>
             <input
-              type="password"
+              type={showPass ? "text" : "password"}
               name="password"
               id="password"
               placeholder="Password"
               className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
             />
+            <span
+              className="absolute right-2 bottom-8"
+              onClick={() => setShowPass(!showPass)}
+            >
+              {!showPass ? (
+                <FaEye className="text-xl"></FaEye>
+              ) : (
+                <FaEyeSlash className="text-xl"></FaEyeSlash>
+              )}
+            </span>
             <div className="flex justify-end text-xs dark:text-gray-600">
               <a rel="noopener noreferrer" href="#">
                 Forgot Password?

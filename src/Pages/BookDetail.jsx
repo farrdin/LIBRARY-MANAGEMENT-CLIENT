@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import ReactiveButton from "reactive-button";
 import { useContext, useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
@@ -6,11 +7,13 @@ import { useParams } from "react-router-dom";
 import ReactStarsRating from "react-awesome-stars-rating";
 import { AuthContext } from "../Context/AuthProvider";
 import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 const BookDetail = () => {
   const { id } = useParams();
   const [details, setDetails] = useState([]);
   const [startDate, setStartDate] = useState(new Date());
+  const [returnDate, setReturnDate] = useState(new Date());
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
@@ -74,7 +77,15 @@ const BookDetail = () => {
           .then((res) => res.json())
           .then((data) => {
             if (data.insertedId) {
-              toast.success("Borrowed Succesfully");
+              Swal.fire({
+                title: "Congratulations!",
+                text: "Borrowed Book  Successfully!",
+                icon: "success",
+                timer: 2000,
+              });
+              document.getElementById("my_modal_5").close();
+              setStartDate(new Date());
+              setReturnDate(new Date());
             }
           });
 
@@ -89,7 +100,6 @@ const BookDetail = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
             if (data.modifiedCount > 0) {
               setDetails((prevDetails) => ({
                 ...prevDetails,
@@ -101,26 +111,25 @@ const BookDetail = () => {
   };
   return (
     <div className="mt-20  lg:flex gap-5 justify-between border p-5 rounded-xl">
-      <div className="mb-10 lg:mb-0 lg:w-[45%] border rounded flex justify-center bg-[#1313130D]">
+      <Helmet>
+        <title>KS | Details</title>
+      </Helmet>
+      <div className="mb-10 lg:mb-0 lg:w-[45%] border rounded flex justify-center">
         <img src={details.image} className="min-h-[calc(100vh-100px)] p-20" />
       </div>
       <div className="lg:w-[55%] flex flex-col gap-3">
         <div className="flex flex-col gap-2">
-          <h1 className="text-[#131313] text-4xl font-bold">{details.name}</h1>
-          <p className="text-[#131313CC] text-xl font-medium">
-            Author : {details.authorName}
-          </p>
+          <h1 className=" text-4xl font-bold">{details.name}</h1>
+          <p className=" text-xl font-medium">Author : {details.authorName}</p>
         </div>
         <hr />
         <div>
-          <span className="text-xl font text-[#131313CC] font-medium">
+          <span className="text-xl font  font-medium">
             {details?.category?.cname}
           </span>
           <hr className="my-3" />
-          <p className="text-[#131313B2] font-normal text-base leading-7">
-            <span className="text-[#131313] font-bold text-base leading-7">
-              Review :
-            </span>
+          <p className=" font-normal text-base leading-7">
+            <span className=" font-bold text-base leading-7">Review :</span>
             {details.shortDescription}
           </p>
         </div>
@@ -208,7 +217,9 @@ const BookDetail = () => {
                       name="date"
                       id="date"
                       type="date"
-                      className="px-6 dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
+                      value={returnDate}
+                      onChange={(e) => setReturnDate(e.target.value)}
+                      className="px-8 rounded-lg"
                     />
                   </div>
                   <div>
@@ -231,11 +242,21 @@ const BookDetail = () => {
                     )}
                   </div>
                 </div>
-                <div className="modal-action flex justify-center gap-5">
-                  <input className="btn" type="submit" value="Submit" />
-                  <form method="dialog">
-                    <button className="btn">Cancel</button>
-                  </form>
+                <div className="modal-action flex justify-center gap-2">
+                  <ReactiveButton
+                    shadow
+                    rounded
+                    type={"submit"}
+                    idleText="Submit"
+                  />
+                  <ReactiveButton
+                    shadow
+                    rounded
+                    onClick={() =>
+                      document.getElementById("my_modal_5").close()
+                    }
+                    idleText="Cancel"
+                  />
                 </div>
               </form>
             </div>

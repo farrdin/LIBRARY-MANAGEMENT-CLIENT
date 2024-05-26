@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 
 const Error = () => {
@@ -11,6 +12,9 @@ const Error = () => {
         height: "100vh",
       }}
     >
+      <Helmet>
+        <title>Error !</title>
+      </Helmet>
       <div className="text-center pt-16 space-y-3">
         <span className="text-5xl font-bold text-[#3F3D56] ">Error </span>
         <span className="text-3xl font-medium text-[#3F3D56]">

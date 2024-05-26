@@ -1,7 +1,8 @@
+import { Helmet } from "react-helmet-async";
 import { useContext, useEffect, useState } from "react";
 import ReactiveButton from "reactive-button";
 import { AuthContext } from "../Context/AuthProvider";
-import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 const Borrowed = () => {
   const { user } = useContext(AuthContext);
@@ -13,41 +14,91 @@ const Borrowed = () => {
       .then((data) => setBorrows(data));
   }, []);
 
-  const handleReturn = (id, ide) => {
-    fetch(`http://localhost:5000/borrowed/${id}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.deletedCount > 0) {
-          toast.success("Returned Book SuccessFully");
+  const handleReturn = async (id, ide) => {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success ml-2",
+        cancelButton: "btn btn-error mr-2",
+      },
+      buttonsStyling: false,
+    });
+
+    const result = await swalWithBootstrapButtons.fire({
+      title: "Return This Book?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, return it",
+      cancelButtonText: "cancel",
+      reverseButtons: true,
+    });
+
+    if (result.isConfirmed) {
+      try {
+        const deleteResponse = await fetch(
+          `http://localhost:5000/borrowed/${id}`,
+          {
+            method: "DELETE",
+          }
+        );
+        const deleteData = await deleteResponse.json();
+
+        if (deleteData.deletedCount > 0) {
           const remaining = borrows.filter((borrow) => borrow._id !== id);
           setBorrows(remaining);
 
-          fetch(`http://localhost:5000/all/incr/${ide}`, {
-            method: "PATCH",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              $inc: { quantity: 1 },
-            }),
-          })
-            .then((res) => res.json())
-            .then((data) => {
-              console.log("Quantity updated successfully:", data);
-            })
-            .catch((error) => {
-              console.error("Error updating quantity:", error);
-            });
+          const updateResponse = await fetch(
+            `http://localhost:5000/all/incr/${ide}`,
+            {
+              method: "PATCH",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                $inc: { quantity: 1 },
+              }),
+            }
+          );
+          const updateData = await updateResponse.json();
+          console.log("Quantity updated successfully:", updateData);
+
+          swalWithBootstrapButtons.fire({
+            title: "Returned!",
+            text: "Book has been Returned.",
+            icon: "success",
+          });
+        } else {
+          Swal.fire({
+            title: "Error!",
+            text: "Failed to Return the Book.",
+            icon: "error",
+            confirmButtonText: "OK",
+          });
         }
+      } catch (error) {
+        console.error("Error:", error);
+        Swal.fire({
+          title: "Error!",
+          text: "An error occurred while Returning the Book.",
+          icon: "error",
+          confirmButtonText: "OK",
+        });
+      }
+    } else if (result.dismiss === Swal.DismissReason.cancel) {
+      swalWithBootstrapButtons.fire({
+        title: "Cancelled",
+        text: "Book is  not returned",
+        icon: "error",
       });
+    }
   };
   return (
     <div className="mt-20">
+      <Helmet>
+        <title>KS | Borrowed Books</title>
+      </Helmet>
       <div className="overflow-x-auto">
         <table className="table">
-          {/* head */}
           <thead>
             <tr>
               <th>Image</th>

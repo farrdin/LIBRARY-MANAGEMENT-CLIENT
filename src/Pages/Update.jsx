@@ -1,13 +1,19 @@
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../Context/AuthProvider";
-import { useParams } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import Swal from "sweetalert2";
+import ReactiveButton from "reactive-button";
 
 const Update = () => {
   const { id } = useParams();
-  const { user } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [categories, setCategories] = useState([]);
+  const [uniqueCategories, setUniqueCategories] = useState([]);
   const [upBooks, setUpBooks] = useState([]);
-  const url = `http://localhost:5000/add?email=${user?.email}`;
+  const url = "http://localhost:5000/all";
+
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())
@@ -15,45 +21,75 @@ const Update = () => {
         const a = data.find((b) => b._id === id);
         setUpBooks(a);
       });
-  }, [url, user?.email]);
+  }, [url]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/all")
+      .then((res) => res.json())
+      .then((data) => {
+        const cat = data.map((item) => item.category);
+        setCategories(cat);
+
+        const uniqueC = [...new Set(cat.map((c) => c.cname))];
+        setUniqueCategories(uniqueC);
+      });
+  }, []);
+
   const handleupBook = (e) => {
     e.preventDefault();
     const form = e.target;
-    const bName = form.bName.value;
-    const aName = form.aName.value;
+    const name = form.bName.value;
+    const authorName = form.aName.value;
     const rating = form.rating.value;
-    const url = form.photo.value;
-    const updatedBook = {
-      bName,
-      aName,
-      rating,
-      url,
+    const image = form.photo.value;
+    const cname = form.category.value;
+    const cimage = form.coverPhoto.value;
+
+    const update = {
+      name: name,
+      authorName: authorName,
+      rating: rating,
+      image: image,
+      category: {
+        cname: cname,
+        cimage: cimage,
+      },
     };
 
-    fetch(`http://localhost:5000/add/${id}`, {
+    fetch(`http://localhost:5000/all/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify({ bName, aName, rating, url }),
+      body: JSON.stringify(update),
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.modifiedCount > 0) {
-          toast.success("Successfully Updated");
+          Swal.fire({
+            title: "Updated Successfully!",
+            text: "You clicked the button!",
+            icon: "success",
+            timer: 4000,
+          });
+          setTimeout(() => {
+            navigate(location?.state ? location.state : "/all");
+          }, 1500);
         } else {
-          alert("Failed to update the book.");
+          toast.error("Failed to update the book.");
         }
       })
       .catch((error) => {
         console.error("Error updating book:", error);
-        alert("An error occurred while updating the book.");
+        toast.error("An error occurred while updating the book.");
       });
   };
   return (
     <div className="mt-20">
-      <section className="p-10 bg-[#E6E6FA] rounded-2xl shadow-xl">
+      <Helmet>
+        <title>KS | Update Book</title>
+      </Helmet>
+      <section className="p-10 rounded-2xl shadow-xl">
         <div className="space-y-2 col-span-full lg:col-span-1">
           <h1 className="font-semibold text-4xl text-center text-[#4572DB]">
             Make changes on your Book
@@ -69,7 +105,7 @@ const Update = () => {
                 Book Name
               </label>
               <input
-                defaultValue={upBooks.bName || ""}
+                defaultValue={upBooks.name || ""}
                 name="bName"
                 id="bName"
                 type="text"
@@ -82,7 +118,7 @@ const Update = () => {
                 Author Name
               </label>
               <input
-                defaultValue={upBooks.aName || ""}
+                defaultValue={upBooks.authorName || ""}
                 name="aName"
                 id="aName"
                 type="text"
@@ -104,34 +140,71 @@ const Update = () => {
               />
             </div>
             <div className="col-span-full sm:col-span-3">
+              <label htmlFor="coverPhoto" className="text-sm">
+                Category Cover Photo URL
+              </label>
+              <input
+                defaultValue={upBooks.category ? upBooks.category.cimage : ""}
+                name="coverPhoto"
+                id="coverPhoto"
+                type="text"
+                placeholder="Cover Photo URL"
+                className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
+              />
+            </div>
+            <div className="col-span-full sm:col-span-3">
               <label htmlFor="rating" className="text-sm">
                 Rating
               </label>
               <input
+                max={5}
+                min={0}
+                step={0.1}
                 defaultValue={upBooks.rating || ""}
                 name="rating"
                 id="rating"
-                type="text"
+                type="number"
                 placeholder="Rating"
                 className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
               />
             </div>
-            <div className="col-span-full sm:col-span-6">
-              <select className="select bg-[#3F68C7] text-white">
-                <option disabled selected className="bg-white text-black">
-                  Category
+            <div className="col-span-full sm:col-span-3 mt-6 w-full">
+              <select
+                name="category"
+                className="select bg-[#3F68C7] text-white w-full"
+                value={upBooks.category ? upBooks.category.cname : ""}
+                onChange={(e) =>
+                  setUpBooks({
+                    ...upBooks,
+                    category: { cname: e.target.value },
+                  })
+                }
+              >
+                <option disabled value="">
+                  -- Select Category --
                 </option>
-                <option className="bg-white text-black">Rating</option>
-                <option className="bg-white text-black">Number of pages</option>
-                <option className="bg-white text-black">Published year</option>
+                {uniqueCategories.map((categoryName, index) => {
+                  const category = categories.find(
+                    (c) => c.cname === categoryName
+                  );
+                  return (
+                    <option key={index} value={categoryName}>
+                      {category.cname}
+                    </option>
+                  );
+                })}
               </select>
             </div>
           </div>
           <div className="flex justify-center">
-            <input
-              type="submit"
-              value="Update Book"
-              className="btn btn-secondary"
+            <ReactiveButton
+              size="large"
+              width="300px"
+              rounded
+              successText="Done"
+              shadow
+              type={"submit"}
+              idleText="Update Book"
             />
           </div>
         </form>

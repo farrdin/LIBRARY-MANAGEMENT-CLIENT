@@ -1,12 +1,16 @@
-import { useContext } from "react";
+import { Helmet } from "react-helmet-async";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/AuthProvider";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const Register = () => {
-  const { createUser } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [showPass, setShowPass] = useState(false);
+  const { createUser } = useContext(AuthContext);
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -14,17 +18,17 @@ const Register = () => {
     const email = form.get("email");
     const password = form.get("password");
     if (password.length < 6) {
-      toast.error("You must enter 6 character or long", {
+      toast.error("You password should be minimum 6 character or long", {
         theme: "colored",
       });
       return;
     } else if (!/[A-Z]/.test(password)) {
-      toast.error("You must enter at least one Uppercase character", {
+      toast.error("You must add one Uppercase character", {
         theme: "colored",
       });
       return;
     } else if (!/[a-z]/.test(password)) {
-      toast.error("You must enter at least one Lowercase character", {
+      toast.error("You must add one Lowercase character", {
         theme: "colored",
       });
       return;
@@ -37,8 +41,11 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         console.log(result.user);
-        toast.success("Congratulations Account Created Successfully", {
-          theme: "colored",
+        Swal.fire({
+          title: "Congratulations!",
+          text: "Your Account Created Successfully!",
+          icon: "success",
+          timer: 2000,
         });
         e.target.reset();
         setTimeout(() => {
@@ -53,6 +60,9 @@ const Register = () => {
 
   return (
     <div className="p-10 mt-20 lg:flex">
+      <Helmet>
+        <title>KS | Register Now</title>
+      </Helmet>
       <div className="lg:border-t lg:border-l lg:border-b  lg:rounded-l-xl mb-5 lg:mb-0 w-full lg:w-3/5">
         <img
           src="https://i.ibb.co/p34VHsd/Thumbnails-7.jpg"
@@ -103,18 +113,28 @@ const Register = () => {
               className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
             />
           </div>
-          <div className="space-y-1 text-sm">
+          <div className="space-y-1 text-sm relative">
             <label htmlFor="password" className="block dark:text-gray-600">
               Password
             </label>
             <input
               required
-              type="password"
+              type={showPass ? "text" : "password"}
               name="password"
               id="password"
               placeholder="Enter Your Password"
               className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
             />
+            <span
+              className="absolute right-2 bottom-4"
+              onClick={() => setShowPass(!showPass)}
+            >
+              {!showPass ? (
+                <FaEye className="text-xl"></FaEye>
+              ) : (
+                <FaEyeSlash className="text-xl"></FaEyeSlash>
+              )}
+            </span>
           </div>
           <button className="block w-full p-3 text-center rounded-sm dark:text-gray-50 dark:bg-[#6C63FE] hover:bg-[#3F3D55] shadow-lg shadow-black/30 hover:shadow-inner hover:shadow-black/30  duration-300 cursor-pointer">
             Sign Up
