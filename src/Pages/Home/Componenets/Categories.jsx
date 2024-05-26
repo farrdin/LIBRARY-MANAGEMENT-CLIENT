@@ -22,11 +22,13 @@ const Categories = () => {
       });
   }, []);
   return (
-    <div
-      id="category"
-      className="md:flex
-    "
-    >
+    <div id="category">
+      <h1 className="text-4xl font-bold text-[#4F5CC1] text-center ">
+        CATEGORIES
+      </h1>
+      <p className="text-base text-center font-medium mt-5 mb-10 ">
+        "Browse, Choose, Enjoy: Find Your Favorite One Awaits!"
+      </p>
       <Swiper
         spaceBetween={10}
         pagination={{
@@ -44,14 +46,17 @@ const Categories = () => {
           },
         }}
         modules={[Pagination]}
-        className="mySwiper w-2/3"
+        className="mySwiper w-full"
       >
         {uniqueCategories.map((categoryName, index) => {
           const category = categories.find((c) => c.cname === categoryName);
           return (
             <SwiperSlide key={index}>
               <div key={index} className="text-center p-5 space-y-3">
-                <img className="h-48 rounded-md" src={category.cimage} />
+                <img
+                  className="h-48 rounded-md mx-auto"
+                  src={category.cimage}
+                />
                 <hr />
                 <p className="text-lg text-[#23BE0A] font-semibold pb-3">
                   #{category.cname}

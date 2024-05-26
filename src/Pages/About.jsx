@@ -31,13 +31,13 @@ const About = () => {
             <CiStar />
           </span>
         </div>
-        <p className="text-base font-medium w-2/3 mx-auto">
+        <p className="text-base font-medium lg:w-2/3 mx-auto">
           Knowledge Shelf is an online library platform where users can explore
           an extensive collection of books, borrow them with ease, and return
           them seamlessly.
         </p>
       </div>
-      <div className="w-2/3 space-y-3 my-10">
+      <div className="lg:w-2/3 space-y-3 my-10">
         <div className="flex ">
           <CiStar className="bg-[#4F5CC1] rounded-full text-xl" />
           <CiStar className="bg-[#4F5CC1] rounded-full text-xl" />
@@ -50,8 +50,8 @@ const About = () => {
           availability, and borrow or return items using their accounts.
         </p>
       </div>
-      <div className="w-full flex">
-        <div className=" w-2/3 grid grid-cols-2 gap-5 p-5">
+      <div className="w-full lg:flex">
+        <div className=" lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-5 p-5">
           <div className=" space-y-2 p-2">
             <h1 className="flex items-center gap-2 text-sm font-semibold">
               <FaAddressCard className="text-2xl" />
@@ -97,7 +97,7 @@ const About = () => {
             </p>
           </div>
         </div>
-        <div className="w-1/3">
+        <div className="lg:w-1/3">
           <Swiper
             effect={"cards"}
             grabCursor={true}
@@ -162,7 +162,7 @@ const About = () => {
         </div>
       </div>
       <hr className="my-5 border-[#4F5CC1]" />
-      <div className="flex justify-around border-r border-l border-[#4F5CC1]">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-5 pl-10 border-r border-l border-[#4F5CC1] ">
         <span className="flex items-center gap-3">
           <FaRocket className="text-3xl" />
           <div>
@@ -193,8 +193,8 @@ const About = () => {
         </span>
       </div>
       <hr className="my-5 border-[#4F5CC1]" />
-      <div className="flex justify-around mt-20">
-        <div className="flex flex-col border-r pr-3 border-[#4F5CC1] space-y-3">
+      <div className="lg:flex justify-around mt-20">
+        <div className="flex flex-col lg:border-r pr-3 border-[#4F5CC1] space-y-3">
           <div className="flex items-center">
             <img src="https://i.ibb.co/jbPptgf/logo.png" className="h-16" />
             <h1 className="text-4xl font-bold">Knowledge Shelf</h1>
@@ -224,9 +224,10 @@ const About = () => {
             ks@home.com
           </span>
         </div>
-        <div>
-          <h1 className="text-xl font-bold">Shipping & Help Information</h1>
-          <hr className="my-5 border-[#4F5CC1] " />
+        <div className="mt-10 md:mt-0">
+          <h1 className="text-xl font-bold my-5">
+            Shipping & Help Information
+          </h1>
           <div className="flex gap-10 ml-4">
             <ul className="list-disc text-sm font-medium space-y-1">
               <li className="link-hover">terms of use</li>
@@ -247,9 +248,8 @@ const About = () => {
             </ul>
           </div>
         </div>
-        <div>
-          <h1 className="text-xl font-bold">Top Selling Authors</h1>
-          <hr className="my-5 border-[#4F5CC1]" />
+        <div className="mt-10 md:mt-0">
+          <h1 className="text-xl font-bold my-5">Top Selling Authors</h1>
           <div className="p-2 space-y-3">
             <div className="flex gap-3">
               <div>
