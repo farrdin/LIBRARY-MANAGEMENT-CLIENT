@@ -7,7 +7,7 @@ import {
 } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 
-const Section1 = () => {
+const OurService = () => {
   return (
     <div>
       <div className="container mx-auto p-4 mb-6 space-y-2 text-center">
@@ -87,4 +87,4 @@ const Section1 = () => {
   );
 };
 
-export default Section1;
+export default OurService;

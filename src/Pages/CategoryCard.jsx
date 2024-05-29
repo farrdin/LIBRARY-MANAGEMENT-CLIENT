@@ -10,7 +10,7 @@ const CategoryCard = () => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/all")
+    fetch("https://prb9-a11.vercel.app/all", { credentials: "include" })
       .then((res) => res.json())
       .then((data) => {
         const filteredBooks = data.filter(

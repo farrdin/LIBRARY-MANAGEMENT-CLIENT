@@ -17,7 +17,7 @@ const BookDetail = () => {
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    fetch("http://localhost:5000/all")
+    fetch("https://prb9-a11.vercel.app/all", { credentials: "include" })
       .then((res) => res.json())
       .then((data) => {
         const book = data.find((book) => book._id === id);
@@ -28,9 +28,10 @@ const BookDetail = () => {
   const handleBorrowBook = (e) => {
     e.preventDefault();
     fetch(
-      `http://localhost:5000/borrowed?email=${encodeURIComponent(
+      `https://prb9-a11.vercel.app/borrowed?email=${encodeURIComponent(
         user?.email
-      )}&id=${details._id}`
+      )}&id=${details._id}`,
+      { credentials: "include" }
     )
       .then((res) => res.json())
       .then((data) => {
@@ -67,13 +68,17 @@ const BookDetail = () => {
           return: returnDate,
         };
 
-        fetch("http://localhost:5000/borrowed", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(BorrowItem),
-        })
+        fetch(
+          "https://prb9-a11.vercel.app/borrowed",
+          { credentials: "include" },
+          {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(BorrowItem),
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             if (data.insertedId) {
@@ -89,15 +94,19 @@ const BookDetail = () => {
             }
           });
 
-        fetch(`http://localhost:5000/all/decr/${id}`, {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            $inc: { quantity: -1 },
-          }),
-        })
+        fetch(
+          `https://prb9-a11.vercel.app/all/decr/${id}`,
+          { credentials: "include" },
+          {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              $inc: { quantity: -1 },
+            }),
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             if (data.modifiedCount > 0) {

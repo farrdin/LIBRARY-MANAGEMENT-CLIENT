@@ -1,14 +1,14 @@
 import { FaGithub, FaLinkedinIn, FaTwitter } from "react-icons/fa";
 
-const Section3 = () => {
+const MeetAuthor = () => {
   return (
     <div>
       <div className="container p-4 mx-auto space-y-16 sm:p-10">
-        <div className="space-y-4">
+        <div className="space-y-4 lg:text-center">
           <h3 className="text-2xl font-bold leading-none text-[#4F5CC1] sm:text-4xl">
             MEET OUR AUHTORS
           </h3>
-          <p className="max-w-2xl text-base font-medium">
+          <p className="max-w-2xl text-base font-medium lg:mx-auto">
             Literary Luminaries: Meet Our Diverse Authors - Where Imagination
             Soars, Perspectives Diverge, and Stories Resonate.
           </p>
@@ -188,4 +188,4 @@ const Section3 = () => {
   );
 };
 
-export default Section3;
+export default MeetAuthor;

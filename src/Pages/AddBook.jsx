@@ -48,13 +48,17 @@ const AddBook = () => {
 
     if (result.isConfirmed) {
       try {
-        const response = await fetch("http://localhost:5000/all", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(addItem),
-        });
+        const response = await fetch(
+          "https://prb9-a11.vercel.app/all",
+          { credentials: "include" },
+          {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(addItem),
+          }
+        );
         const data = await response.json();
         if (data.insertedId) {
           form.reset();

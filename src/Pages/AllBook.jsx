@@ -11,9 +11,9 @@ const AllBook = () => {
   const [addBooks, setAddBooks] = useState([]);
   const [showAvailableBooks, setShowAvailableBooks] = useState(false);
   const [isTableView, setIsTableView] = useState(false);
-  const url = "http://localhost:5000/all";
+  const url = "https://prb9-a11.vercel.app/all";
   useEffect(() => {
-    fetch(url)
+    fetch(url, { credentials: "include" })
       .then((res) => res.json())
       .then((data) => setAddBooks(data));
   }, []);

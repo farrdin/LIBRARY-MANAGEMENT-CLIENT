@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import ReactiveButton from "reactive-button";
 
-const Section2 = () => {
+const EasyBook = () => {
   return (
     <div>
       <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
@@ -36,4 +36,4 @@ const Section2 = () => {
   );
 };
 
-export default Section2;
+export default EasyBook;

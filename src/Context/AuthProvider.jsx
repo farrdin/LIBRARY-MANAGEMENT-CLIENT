@@ -11,6 +11,7 @@ import {
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import app from "../../Firebase.config";
+import axios from "axios";
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
@@ -52,11 +53,30 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+      const userEmail = currentUser?.email || user?.email;
+      const loggedEmail = { email: userEmail };
       setUser(currentUser);
       setLoading(false);
       setName(currentUser.displayName || "");
       setPhotoURL(currentUser.photoURL || "");
       setNewPassword(currentUser.password || "");
+      if (currentUser) {
+        axios
+          .post("https://prb9-a11.vercel.app/jwt", loggedEmail, {
+            withCredentials: true,
+          })
+          .then((res) => {
+            // console.log(res.data);
+          });
+      } else {
+        axios
+          .post("https://prb9-a11.vercel.app/logout", loggedEmail, {
+            withCredentials: true,
+          })
+          .then((res) => {
+            // console.log(res.data);
+          });
+      }
     });
     return () => {
       unSubscribe();

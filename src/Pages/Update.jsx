@@ -12,10 +12,10 @@ const Update = () => {
   const [categories, setCategories] = useState([]);
   const [uniqueCategories, setUniqueCategories] = useState([]);
   const [upBooks, setUpBooks] = useState([]);
-  const url = "http://localhost:5000/all";
+  const url = "https://prb9-a11.vercel.app/all";
 
   useEffect(() => {
-    fetch(url)
+    fetch(url, { credentials: "include" })
       .then((res) => res.json())
       .then((data) => {
         const a = data.find((b) => b._id === id);
@@ -24,7 +24,7 @@ const Update = () => {
   }, [url]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/all")
+    fetch("https://prb9-a11.vercel.app/all", { credentials: "include" })
       .then((res) => res.json())
       .then((data) => {
         const cat = data.map((item) => item.category);
@@ -56,13 +56,17 @@ const Update = () => {
       },
     };
 
-    fetch(`http://localhost:5000/all/${id}`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(update),
-    })
+    fetch(
+      `https://prb9-a11.vercel.app/all/${id}`,
+      { credentials: "include" },
+      {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(update),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {

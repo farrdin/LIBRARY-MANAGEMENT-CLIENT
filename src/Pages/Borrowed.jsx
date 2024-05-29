@@ -7,9 +7,9 @@ import Swal from "sweetalert2";
 const Borrowed = () => {
   const { user } = useContext(AuthContext);
   const [borrows, setBorrows] = useState([]);
-  const url = `http://localhost:5000/borrowed?email=${user?.email}`;
+  const url = `https://prb9-a11.vercel.app/borrowed?email=${user?.email}`;
   useEffect(() => {
-    fetch(url)
+    fetch(url, { credentials: "include" })
       .then((res) => res.json())
       .then((data) => setBorrows(data));
   }, []);
@@ -36,7 +36,8 @@ const Borrowed = () => {
     if (result.isConfirmed) {
       try {
         const deleteResponse = await fetch(
-          `http://localhost:5000/borrowed/${id}`,
+          `https://prb9-a11.vercel.app/borrowed/${id}`,
+          { credentials: "include" },
           {
             method: "DELETE",
           }
@@ -48,7 +49,8 @@ const Borrowed = () => {
           setBorrows(remaining);
 
           const updateResponse = await fetch(
-            `http://localhost:5000/all/incr/${ide}`,
+            `https://prb9-a11.vercel.app/all/incr/${ide}`,
+            { credentials: "include" },
             {
               method: "PATCH",
               headers: {
@@ -60,7 +62,6 @@ const Borrowed = () => {
             }
           );
           const updateData = await updateResponse.json();
-          console.log("Quantity updated successfully:", updateData);
 
           swalWithBootstrapButtons.fire({
             title: "Returned!",

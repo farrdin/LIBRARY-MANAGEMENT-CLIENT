@@ -22,7 +22,7 @@ const Login = () => {
     const password = form.get("password");
     logIn(email, password)
       .then((result) => {
-        console.log(result.user);
+        // console.log(result.user);
         Swal.fire({
           title: "Congratulations!",
           text: "Signed In  Successfully!",
@@ -42,7 +42,7 @@ const Login = () => {
   const handleGoogleLogin = () => {
     googleLogIn()
       .then((result) => {
-        console.log(result.user);
+        // console.log(result.user);
         Swal.fire({
           title: "Congratulations!",
           text: "Google Signed In  Successfully with!",
@@ -57,7 +57,7 @@ const Login = () => {
   const handleGitHubLogin = () => {
     gitHubLogIn()
       .then((result) => {
-        console.log(result.user);
+        // console.log(result.user);
         Swal.fire({
           title: "Congratulations!",
           text: "Github Signed In  Successfully with!",
@@ -72,7 +72,7 @@ const Login = () => {
   const handleFacebookLogin = () => {
     facebookLogin()
       .then((result) => {
-        console.log(result.user);
+        // console.log(result.user);
         Swal.fire({
           title: "Congratulations!",
           text: "Facebook Signed In  Successfully with!",
