@@ -48,17 +48,14 @@ const AddBook = () => {
 
     if (result.isConfirmed) {
       try {
-        const response = await fetch(
-          "https://prb9-a11.vercel.app/all",
-          { credentials: "include" },
-          {
-            method: "POST",
-            headers: {
-              "content-type": "application/json",
-            },
-            body: JSON.stringify(addItem),
-          }
-        );
+        const response = await fetch("https://prb9-a11.vercel.app/all", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify(addItem),
+        });
         const data = await response.json();
         if (data.insertedId) {
           form.reset();
@@ -117,7 +114,7 @@ const AddBook = () => {
               <input
                 required
                 name="book"
-                id="Book"
+                id="book"
                 type="text"
                 placeholder="Book name"
                 className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"

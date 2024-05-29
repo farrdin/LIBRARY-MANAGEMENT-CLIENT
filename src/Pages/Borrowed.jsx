@@ -37,7 +37,6 @@ const Borrowed = () => {
       try {
         const deleteResponse = await fetch(
           `https://prb9-a11.vercel.app/borrowed/${id}`,
-          { credentials: "include" },
           {
             method: "DELETE",
           }
@@ -50,7 +49,6 @@ const Borrowed = () => {
 
           const updateResponse = await fetch(
             `https://prb9-a11.vercel.app/all/incr/${ide}`,
-            { credentials: "include" },
             {
               method: "PATCH",
               headers: {

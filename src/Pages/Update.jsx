@@ -56,17 +56,13 @@ const Update = () => {
       },
     };
 
-    fetch(
-      `https://prb9-a11.vercel.app/all/${id}`,
-      { credentials: "include" },
-      {
-        method: "PATCH",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(update),
-      }
-    )
+    fetch(`https://prb9-a11.vercel.app/all/${id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(update),
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {

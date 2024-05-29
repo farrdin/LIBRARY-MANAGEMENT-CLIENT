@@ -68,17 +68,13 @@ const BookDetail = () => {
           return: returnDate,
         };
 
-        fetch(
-          "https://prb9-a11.vercel.app/borrowed",
-          { credentials: "include" },
-          {
-            method: "POST",
-            headers: {
-              "content-type": "application/json",
-            },
-            body: JSON.stringify(BorrowItem),
-          }
-        )
+        fetch("https://prb9-a11.vercel.app/borrowed", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(BorrowItem),
+        })
           .then((res) => res.json())
           .then((data) => {
             if (data.insertedId) {
@@ -94,19 +90,15 @@ const BookDetail = () => {
             }
           });
 
-        fetch(
-          `https://prb9-a11.vercel.app/all/decr/${id}`,
-          { credentials: "include" },
-          {
-            method: "PATCH",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              $inc: { quantity: -1 },
-            }),
-          }
-        )
+        fetch(`https://prb9-a11.vercel.app/all/decr/${id}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            $inc: { quantity: -1 },
+          }),
+        })
           .then((res) => res.json())
           .then((data) => {
             if (data.modifiedCount > 0) {
