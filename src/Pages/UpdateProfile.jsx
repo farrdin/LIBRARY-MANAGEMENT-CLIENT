@@ -105,10 +105,10 @@ const UpdateProfile = () => {
                   <span className="label-text">Email</span>
                 </label>
                 <input
+                  disabled
                   type="email"
                   id="email"
-                  value={user.email}
-                  readOnly
+                  value={user.email.replace(/(?<=.{1}).*(?=@)/, "******")}
                   className="input input-bordered"
                 />
                 <label htmlFor="photoURL">

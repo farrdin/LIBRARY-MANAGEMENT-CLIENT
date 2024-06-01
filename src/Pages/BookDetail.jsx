@@ -187,12 +187,10 @@ const BookDetail = () => {
                   <input
                     disabled
                     defaultValue={user.displayName}
-                    required
                     name="name"
-                    id="name "
+                    id="name"
                     type="text"
-                    placeholder="Your Name"
-                    className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
+                    className="w-full px-4 py-3 rounded-md input input-bordered"
                   />
                 </div>
                 <div className="col-span-full sm:col-span-3 mb-10">
@@ -200,17 +198,15 @@ const BookDetail = () => {
                     Your Email
                   </label>
                   <input
-                    disabled
                     defaultValue={user.email.replace(
-                      /(?<=.{3}).*(?=@)/,
+                      /(?<=.{1}).*(?=@)/,
                       "******"
                     )}
-                    required
+                    disabled
                     name="email"
                     id="email"
                     type="email"
-                    placeholder="Your Email"
-                    className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
+                    className="w-full px-4 py-3 rounded-md input input-bordered"
                   />
                 </div>
                 <div className="flex flex-col md:flex-row gap-5">

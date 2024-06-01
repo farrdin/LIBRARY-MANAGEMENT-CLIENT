@@ -115,8 +115,10 @@ const NavBar = () => {
             >
               <li>
                 <Link to="/updateprofile" className="justify-between">
-                  {!user.displayName ? user.email : user.displayName}
-                  <span className="badge text-[10px]">Update info</span>
+                  {!user.displayName
+                    ? user.email.replace(/(?<=.{1}).*(?=@)/, "******")
+                    : user.displayName}
+                  <span className="badge text-[10px]">Update</span>
                 </Link>
               </li>
               <li>
