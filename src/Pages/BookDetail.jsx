@@ -185,6 +185,7 @@ const BookDetail = () => {
                     Your Name
                   </label>
                   <input
+                    disabled
                     defaultValue={user.displayName}
                     required
                     name="name"
@@ -199,7 +200,11 @@ const BookDetail = () => {
                     Your Email
                   </label>
                   <input
-                    defaultValue={user.email}
+                    disabled
+                    defaultValue={user.email.replace(
+                      /(?<=.{3}).*(?=@)/,
+                      "******"
+                    )}
                     required
                     name="email"
                     id="email"

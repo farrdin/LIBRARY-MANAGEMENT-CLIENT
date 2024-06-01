@@ -52,7 +52,9 @@ const AllBook = () => {
           </select>
         </div>
         <div>
-          <h1 className="text-center">All Books you Found Here</h1>
+          <h1 className="text-center text-4xl font-bold text-[#4F5CC1]">
+            All Books
+          </h1>
         </div>
         <div>
           <ReactiveButton
