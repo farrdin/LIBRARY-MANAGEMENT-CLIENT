@@ -142,7 +142,6 @@ const NavBar = () => {
           </>
         )}
         <label className="swap swap-rotate">
-          {/* this hidden checkbox controls the state */}
           <input
             checked={theme === "dark"}
             onChange={handleTheme}

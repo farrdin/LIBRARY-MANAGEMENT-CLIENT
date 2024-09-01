@@ -5,6 +5,9 @@ import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import { ReactTyped } from "react-typed";
 import ReactiveButton from "reactive-button";
+import Banner1 from "../../../assets/Banner1.jpg";
+import Banner2 from "../../../assets/Banner2.jpg";
+import Banner3 from "../../../assets/Banner3.jpg";
 
 const Banner = () => {
   const scrollToSection = (sectionId) => {
@@ -31,11 +34,7 @@ const Banner = () => {
       >
         <SwiperSlide>
           <div>
-            <img
-              className="w-full rounded-2xl"
-              src="https://i.ibb.co/S74vpm2/Banner-1.jpg"
-              alt=""
-            />
+            <img className="w-full rounded-2xl" src={Banner1} alt="" />
             <div className="absolute inset-0 flex flex-col items-center justify-center text-white bg-black bg-opacity-10 bg-gradient-to-l from-transparent to-black space-y-10 ">
               <h1 className="text-center leading-10 text-4xl font-bold w-2/3 mx-auto">
                 <ReactTyped
@@ -58,11 +57,7 @@ const Banner = () => {
         </SwiperSlide>
         <SwiperSlide>
           <div>
-            <img
-              className="w-full rounded-2xl"
-              src="https://i.ibb.co/f0wc4VM/Banner-2.jpg"
-              alt=""
-            />
+            <img className="w-full rounded-2xl" src={Banner2} alt="" />
             <div className="absolute inset-0 flex flex-col items-center justify-center text-white bg-black bg-opacity-10 bg-gradient-to-l from-transparent to-black space-y-10">
               <h1 className="text-center leading-10 text-4xl font-bold w-2/3 mx-auto">
                 <ReactTyped
@@ -85,11 +80,7 @@ const Banner = () => {
         </SwiperSlide>
         <SwiperSlide>
           <div className="relative">
-            <img
-              className="w-full rounded-2xl"
-              src="https://i.ibb.co/vjcm18H/Banner-3.jpg"
-              alt="Banner 3"
-            />
+            <img className="w-full rounded-2xl" src={Banner3} alt="Banner 3" />
             <div className="absolute inset-0 flex flex-col items-center justify-center text-white bg-black bg-opacity-10 bg-gradient-to-l from-transparent to-black space-y-10">
               <h1 className="text-center leading-10 text-4xl font-bold w-2/3 mx-auto">
                 <ReactTyped
